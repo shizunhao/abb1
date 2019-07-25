@@ -3,7 +3,7 @@ const pool = require("../pool.js");
 var router = express.Router();
 //个人信息接口
 router.get("/", (req, res) => {
-  
+  //获取session值
   var user_id=req.session.user_id;
   if(!user_id){
     res.send({code:-1,msg:'请登录'});
