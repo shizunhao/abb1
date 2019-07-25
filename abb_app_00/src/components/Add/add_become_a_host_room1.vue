@@ -115,6 +115,11 @@ export default {
   created() {
     this.loadMore();
   },
+  mounted(){
+     setTimeout(() => {
+                this.localStorage()
+            }, 300)
+   },
   methods: {
     loadMore() {
       this.axios
@@ -173,6 +178,9 @@ export default {
     },
     localStorage(){
       let n = localStorage.getItem("House_Building")
+      if(n>11){
+        this.show()
+      }
       this.select(n);
       let m = localStorage.getItem("House_type")
       this.Rentselect(m)

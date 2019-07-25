@@ -37,8 +37,8 @@
                     </p>
                 </div>
                 <div id="btn_alert">
-                    <div>返回</div>
-                    <div>退出并放弃保存</div>
+                    <div @click="alert_show_close()">返回</div>
+                    <div @click="return1()">退出并放弃保存</div>
                 </div>
             </div>
         </div>
@@ -71,6 +71,9 @@ export default {
     //      this.$router.push("/room");
     // },
     methods:{    
+        return1(){
+            this.$router.push("/index")
+        },
         change(show){
              //console.log(show)
             this.showbar=show;
