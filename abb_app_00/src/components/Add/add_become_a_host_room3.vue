@@ -85,6 +85,7 @@ export default {
       // }
     },
     submit() {
+      localStorage.setItem("House_restroom", this.count)
       this.$emit("change", 4);
       this.$router.push("/add_become_a_host_room/location");
     },

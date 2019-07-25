@@ -105,13 +105,13 @@ export default {
         {
           Rent_name: ""
         }
-      ]
+      ],
+      Rent_Type1:'',
+      House_Building:''
+
+
     };
   },
-  // props:{
-  //     Airbnb_House:{default:""},
-  //      add_page:{default:""}
-  //     },
   created() {
     this.loadMore();
   },
@@ -124,20 +124,15 @@ export default {
         });
       this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
         this.Rent_Type = result.data;
-        //console.log(this.Rent_Type)
       });
-      //setTimeout(function(){this.Rentselect(0);},3000)
-      // console.log(add_page)
-      // if(this.add_page>=0){
-      //     this.Airbnb_House.Rent_Type=0;
-      // }
     },
     submit() {
-      // console.log(11)
+      localStorage.setItem("House_type", this.Rent_Type1)
+      localStorage.setItem("House_Building", this.House_Building)
       this.$emit("change", 2);
       this.$router.push("/add_become_a_host_room/bedrooms?id=6");
       // this.$router.push({path:'/add_become_a_host_room/bedrooms' , params: { add_page:this.add_page }})
-      // this.$router.params.this.Airbnb_House
+
     },
     return1() {
       // this.$router.push("/index")
@@ -160,7 +155,8 @@ export default {
         divc.style.background = "rgb(242,242,242)";
       }
       divs[i].style.background = "rgb(178,218,219)";
-      //this.Airbnb_House.House_Building=i;
+      this.House_Building=i;
+      //console.log(this.House_Building)
     },
     Rentselect(i) {
       var Rent_Type = document.getElementById("Rent_Type");
@@ -169,7 +165,8 @@ export default {
         Rent_Typec.style.background = "rgb(242,242,242)";
       }
       Rent_Types[i].style.background = "rgb(178,218,219)";
-      // this.Airbnb_House.House_type=i;
+       this.Rent_Type1=i;
+      // console.log(this.Rent_Type1)
     }
   }
 };

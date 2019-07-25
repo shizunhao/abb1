@@ -55,6 +55,10 @@
     export default {
         data() {
             return {
+                House_City_id: "",
+                House_District_id: "",
+                House_address: "",
+                House_number: "",
                 House_name: "",
                 namecount: 50,
                 housingResources_Type: {},
@@ -65,26 +69,16 @@
                 House_bednum: "",
                 House_Bed: "",
                 House_restroom: "",
-                House_City_id: "",
-                House_District_id: "",
-                House_address: "",
-                House_number: "",
                 House_name: "",
                 House_User_id: 1,
-                ceshi:333
+                
             }
         },
         methods: {
             submit() {
                 localStorage.setItem("House_name", this.House_name)
                 // this.housingResources_Type=localStorage.getItem("House_type")
-                this.House_type = localStorage.getItem("House_type")
-                
-
-                this.House_people_num = localStorage.getItem("House_people_num")
-                // console.log(this.House_people_num)
-                this.House_bednum = localStorage.getItem("House_bednum")
-                // console.log(this.House_bednum)
+                //合用空间床
                 if (localStorage.getItem("bed1count")) {
                     this.House_Bed = localStorage.getItem("bed1count")
                 }
@@ -100,61 +94,44 @@
                 if (localStorage.getItem("bed5count")) {
                     this.House_Bed += `|${localStorage.getItem("bed5count")}`
                 }
-                // console.log(this.House_Bed)
-                //0|0|0|0|0
-
-                // console.log(localStorage.getItem("bed1count"))
-                // console.log(localStorage.getItem("bed2count"))
-                // console.log(localStorage.getItem("bed3count"))
-                // console.log(localStorage.getItem("bed4count"))
-                // console.log(localStorage.getItem("bed5count"))
-                this.House_restroom = localStorage.getItem("House_restroom")
+                 console.log(this.House_Bed)
+                //0|0|0|0|0          
+                this.House_people_num = localStorage.getItem("House_people_num")
+                this.House_bednum = localStorage.getItem("House_bednum")
                 this.House_City_id = localStorage.getItem("House_City_id")
                 this.House_District_id = localStorage.getItem("House_District_id")
                 this.House_address = localStorage.getItem("House_address")
                 this.House_number = localStorage.getItem("House_number")
-                this.House_name = localStorage.getItem("House_name")
+                this.House_name = localStorage.getItem("House_name")            
+                this.House_restroom = localStorage.getItem("House_restroom")
 
-                // House_id,House_City_id,House_District_id,House_name,House_User_id,House_people_num,House_type,House_bednum,
-                // House_Bed,House_restroom,House_Building,House_address,House_number
-                // this.axios.get("http://127.0.0.1:3000/add/insertHouse", {params: {
-                //     House_id:null,
-                //     House_City_id:House_City_id,
-                //     House_District_id:House_District_id,
-                //     House_name:House_name,
-                //     House_User_id:House_User_id,
-                //     House_people_num:House_people_num,
-                //     House_type:House_type,
-                //     House_bednum:House_bednum,
-                //     House_Bed: House_Bed,
-                //     House_restroom:House_restroom,
-                //     House_Building:House_Building,
-                //     House_address:House_address,
-                //     House_number:House_number
-                // }})
-                // .then(result => {
-                //      console.log(result.data);
-                //     console.log(this.housingResources_Type)
-                // })
-                //测试接口
-                // var ceshi=3
-                // var ceshi2=444
-                // this.axios.get("http://127.0.0.1:3000/add/ceshi", {params: {
-                //  "ceshi":ceshi
-                // }})
-                // .then(result => {
-                //     console.log(11)
-                //     console.log(11)
-                //      console.log(result.data);
-                // })
-                
-            
+                this.House_type = localStorage.getItem("House_type")
+                this.House_Building = localStorage.getItem("House_Building")
+                //接口
+                 var obj={                    
+                    // House_id:null,
+                    House_City_id:this.House_City_id,//1
+                    House_District_id:this.House_District_id,//1
+                    House_address:this.House_address,//1
+                    House_number:this.House_number,//1
+                    House_name:this.House_name,//1
+                    House_restroom:this.House_restroom,
+                    House_people_num:this.House_people_num,//1
+                    House_bednum:this.House_bednum,//1
+                    // House_Bed:this.House_Bed,//合用空间床格式
+
+                    // House_User_id:this.House_User_id,
+                    // House_type:this.House_type,//格式
+                    // House_Building:this.House_Building//格式
+                };
+                this.axios.get("http://127.0.0.1:3000/add/ceshi", {params:obj}).then(result => {
+                     console.log(result.data);
+                })
                 this.$router.push("/add_end")
             },
             return1() {
                 this.$router.push("/add_become_a_host_room/photos")
             },
-
             House_namechange() {
                 // this.Airbnb_House.House_name = this.House_name;
             },
@@ -162,13 +139,6 @@
                 this.namecount = 50 - this.House_name.length
             }
         },
-
-        // computed:{
-        //     namecount(){            
-        //         this.namecount=50-this.House_name.length
-        // 				return this.namecount
-        //             }
-        // },
     }
 </script>
 <style scoped>

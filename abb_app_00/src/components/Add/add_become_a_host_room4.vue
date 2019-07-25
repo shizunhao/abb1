@@ -92,6 +92,10 @@
 
         methods: {
             submit() {
+                localStorage.setItem("House_City_id", this.cityid)
+                localStorage.setItem("House_District_id", this.districtid)
+                localStorage.setItem("House_address", this.House_address)
+                localStorage.setItem("House_number", this.House_number)
                 this.$emit('change',5);
                 this.$router.push({path: '/add_become_a_host_room/location2', query: {key: this.districtid}})
             },

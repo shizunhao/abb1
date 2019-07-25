@@ -300,6 +300,13 @@
         },
         methods: {
             submit() {
+                localStorage.setItem("House_bednum", this.bedcount)
+                localStorage.setItem("House_people_num", this.peoplecount)
+                localStorage.setItem("bed1count", this.bed1count)
+                localStorage.setItem("bed2count", this.bed2count)
+                localStorage.setItem("bed3count", this.bed3count)
+                localStorage.setItem("bed4count", this.bed4count)
+                localStorage.setItem("bed5count", this.bed5count)
                 this.$emit('change',3);
                 this.$router.push("/add_become_a_host_room/bathrooms")
             },
@@ -340,6 +347,7 @@
                     count += n;
                 }
                 this.bedcount = count;
+                //console.log(this.bedcount)
             },
             people_count(m) {
                 var people_reduce = document.getElementById("people_reduce")
