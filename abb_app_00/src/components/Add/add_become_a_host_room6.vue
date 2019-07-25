@@ -1,7 +1,8 @@
 <template>
     <!-- 房源图片上传 -->
-    <div class="div_bg" style="background: #f8f8f8;">
+    <div class="div_bg">
         <div class="div_bgfff"></div>
+        <div class="div_bgfff2" style="width:20%"></div>
         <div class="div_body" style="padding-top:74px;">
             <div>
                 <div class="font-title3" style="margin-bottom:10px;">
@@ -54,7 +55,6 @@
         </div>
     </div>
 </template>
-<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=您申请的key值"></script>
 <script>
     export default {
         data() {
@@ -76,10 +76,9 @@
 </script>
 <style scoped>
     .div_body {
-        width: 912px;
+        width:60%;
         margin: auto;
         font-size: 16px;
-        padding-top: 74px;
     }
 
     .div_body>div {

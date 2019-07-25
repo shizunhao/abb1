@@ -70,7 +70,17 @@ router.get("/dd",(req,res)=>{
     }
   })
 })
-
+//上传图片1接口
+// router.post('/uploadImg', function(req, res, next) {
+//   console.log(req.body);
+//   console.log(req.files);
+  //获取详细信息
+//   var file = req.files.logo;//From the name
+//   console.log('文件类型：%s', file.type);
+//   console.log('原始文件名：%s', file.name);
+//   console.log('文件大小：%s', file.size);
+//   console.log('文件保存路径：%s', file.path);
+// });
 // 上传房源信息接口
 // router.get("/insertHouse",(req,res)=>{
 //   var obj=req.query;

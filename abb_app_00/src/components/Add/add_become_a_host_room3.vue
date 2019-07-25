@@ -1,7 +1,8 @@
 <template>
     <!-- 卫生间数量 -->
-    <div class="div_bg" style="background: #f8f8f8;">
+    <div class="div_bg">
         <div class="div_bgfff"></div>
+        <div class="div_bgfff2"></div>
         <div class="div_body" style="padding-top:74px;">
             <div>
             <div class="div_title font_title1">
@@ -10,7 +11,7 @@
             <div class="font-title3">
                 <p>没有淋浴区或浴缸的卫生间算半个卫生间。</p>
             </div>
-            <div class="div_body1" style="margin-bottom:500px;">
+            <div class="div_body1">
                 <div class="text_addreduce">
                     <p>卫生间</p>
                 </div>
@@ -68,147 +69,152 @@
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                count: 1,
+export default {
+  data() {
+    return {
+      count: 1
+    };
+  },
+  created() {
+    this.loadMore();
+  },
+  methods: {
+    loadMore() {
+      // if(this.add_page>=2){
+      //     this.Airbnb_House.House_restroom=0;
+      // }
+    },
+    submit() {
+      this.$emit("change", 4);
+      this.$router.push("/add_become_a_host_room/location");
+    },
+    return1() {
+      this.$router.push("/add_become_a_host_room/bedrooms");
+    },
 
-            }
-        },
-        created() {
-            this.loadMore();
-        },
-        methods: {
-            loadMore() {
-                // if(this.add_page>=2){
-                //     this.Airbnb_House.House_restroom=0;
-                // }  
-            },
-            submit() {
-                this.$emit('change', 4);
-                this.$router.push("/add_become_a_host_room/location")
-            },
-            return1() {
-                this.$router.push("/add_become_a_host_room/bedrooms")
-            },
-
-            bed_count(z) {
-                var btn_reduce = document.getElementById("btn_reduce")
-                var btn_add = document.getElementById("btn_add")
-                if (z == 1) {
-                    if (this.count < 8) {
-                        btn_reduce.style.opacity = "1"
-                        this.count += z;
-                    } else if (this.count == 8) {
-                        btn_add.style.opacity = "0.3"
-                        this.count += z;
-                    }
-                } else {
-                    if (this.count > 1) {
-                        this.count += z;
-                        btn_add.style.opacity = "1"
-                    } else if (this.count == 1) {
-                        this.count += -0.5;
-                    } else if (this.count == 0.5) {
-                        this.count += -0.5;
-                        btn_reduce.style.opacity = "0.3"
-                    }
-                }
-                //console.log(this.count) 
-                // this.Airbnb_House.House_restroom=this.count   
-                //console.log(this.Airbnb_House.House_restroom);
-            }
+    bed_count(z) {
+      var btn_reduce = document.getElementById("btn_reduce");
+      var btn_add = document.getElementById("btn_add");
+      if (z == 1) {
+        if (this.count < 8) {
+          btn_reduce.style.opacity = "1";
+          this.count += z;
+        } else if (this.count == 8) {
+          btn_add.style.opacity = "0.3";
+          this.count += z;
         }
-
+      } else {
+        if (this.count > 1) {
+          this.count += z;
+          btn_add.style.opacity = "1";
+        } else if (this.count == 1) {
+          this.count += -0.5;
+        } else if (this.count == 0.5) {
+          this.count += -0.5;
+          btn_reduce.style.opacity = "0.3";
+        }
+      }
+      //console.log(this.count)
+      // this.Airbnb_House.House_restroom=this.count
+      //console.log(this.Airbnb_House.House_restroom);
     }
+  }
+};
 </script>
 <style scoped>
-    .div_body {
-        width: 912px;
-        margin: auto;
-        font-size: 16px;
-        padding-top: 74px;
-    }
+html {
+  background: #f8f8f8;
+  position: absolute !important;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+}
+.div_body {
+  width: 60%;
+  margin: auto;
+  font-size: 16px;
+}
 
-    .div_body>div {
-        width: 60%;
-        box-sizing: border-box;
-        padding: 30px 30px 16px 30px;
-        padding-bottom: 102px;
-        background: #fff;
-    }
+.div_body > div {
+  width: 60%;
+  box-sizing: border-box;
+  padding: 30px 30px 16px 30px;
+  padding-bottom: 102px;
+  background: #fff;
+}
 
-    .div_title {
-        padding: 32px 0 24px;
-    }
+.div_title {
+  padding: 32px 0 24px;
+}
 
-    .font_title1 {
-        font-size: 24px;
-        font-weight: 800;
-        line-height: 1.25em;
-        color: #484848;
-        padding: 32px 0 10px;
-    }
+.font_title1 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.25em;
+  color: #484848;
+  padding: 32px 0 10px;
+}
 
-    .font-title3 {
-        font-weight: 400;
-        line-height: 1.375em;
-        color: rgb(72, 72, 72);
-        margin-bottom: 32px;
-    }
+.font-title3 {
+  font-weight: 400;
+  line-height: 1.375em;
+  color: rgb(72, 72, 72);
+  margin-bottom: 32px;
+}
 
-    .text_addreduce {
-        font-weight: 600;
-        width: 40%;
-        line-height: 1.375em;
-        color: #484848;
-        float: left;
-        margin-top: 10px;
-    }
+.text_addreduce {
+  font-weight: 600;
+  width: 40%;
+  line-height: 1.375em;
+  color: #484848;
+  float: left;
+  margin-top: 10px;
+}
 
-    .div_btn_add {
-        float: left;
-        width: 32px;
-        height: 32px;
-        cursor: pointer;
-        border-radius: 50%;
-        border: 1px solid rgb(0, 132, 137);
-        position: relative;
-    }
+.div_btn_add {
+  float: left;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid rgb(0, 132, 137);
+  position: relative;
+}
 
-    .btn_add {
-        float: left;
-        width: 60%;
-    }
+.btn_add {
+  float: left;
+  width: 60%;
+}
 
-    .btn_add>div {
-        float: left;
-        width: 32px;
-        height: 32px;
-    }
+.btn_add > div {
+  float: left;
+  width: 32px;
+  height: 32px;
+}
 
-    .btn_add:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
+.btn_add:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
-    .div_btn_add>svg {
-        position: absolute;
-        top: 25%;
-        left: 25%;
-    }
+.div_btn_add > svg {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+}
 
-    .count_addreduce {
-        width: 15% !important;
-        text-align: center;
-        vertical-align: middle;
-        height: 34px;
-    }
+.count_addreduce {
+  width: 15% !important;
+  text-align: center;
+  vertical-align: middle;
+  height: 34px;
+}
 
-    .count_addreduce>span {
-        display: block;
-        margin: 7px auto;
-        font-weight: 600;
-    }
+.count_addreduce > span {
+  display: block;
+  margin: 7px auto;
+  font-weight: 600;
+}
 </style>

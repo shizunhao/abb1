@@ -1,8 +1,9 @@
 <template>
     <!-- 地图地址 -->
 
-    <div class="div_bg" style="background: #f8f8f8;">
+    <div class="div_bg">
         <div class="div_bgfff"></div>
+        <div class="div_bgfff2" style="width:20%"></div>
         <div class="div_body" style="padding-top:74px;">
             <div>
                 <div class="div_title font_title1" >
@@ -52,8 +53,8 @@
                     </div>
                 </div>
                 <!-- 地图 -->
-                <div class="div_body3" style="width:100%;height:800px;">
-                    <div id="container" @click="map_title" style="width:100%;height:800px;"></div>
+                <div class="div_body3" style="width:100%;height:370px;">
+                    <div id="container" @click="map_title" style="width:100%;height:370px;"></div>
 
                 </div>
                <!-- 底部固定悬浮 -->
@@ -72,7 +73,7 @@
                                     </svg>
                                 </div>                           
                                 <div class="return_btn" @click="return1">返回</div>
-                                <div class="next_btn" @click="submit">下一个</div>
+                                <div class="next_btn" @click="submit" style="min-width: 8%;max-width: 14%;">下一个</div>
                             </div>
                         </div>
     
@@ -151,10 +152,9 @@
 <style scoped>
   
     .div_body {
-        width: 912px;
+        width: 60%;
         margin: auto;
         font-size: 16px;
-        padding-top: 74px;
     }
 
     .div_body>div {

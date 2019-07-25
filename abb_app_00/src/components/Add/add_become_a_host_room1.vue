@@ -1,7 +1,8 @@
 <template>
     <!-- 出租类型、房源类型 -->
-    <div class="div_bg" style="background: #f8f8f8;">
+    <div class="div_bg">
         <div class="div_bgfff"></div>
+        <div class="div_bgfff2"></div>
         <div class="div_body" style="padding-top:74px;">
             <div>
                 <div class="div_title font_title1">
@@ -90,281 +91,313 @@
     </div>
 </template>
 <script>
-    export default {
-        data() {
-            return {
-                housingResources_Type: [],
-                Rent_Type: [{
-                    Rent_name: ""
-                }, {
-                    Rent_name: ""
-                }, {
-                    Rent_name: ""
-                }],
-            }
+export default {
+  data() {
+    return {
+      housingResources_Type: [],
+      Rent_Type: [
+        {
+          Rent_name: ""
         },
-        // props:{
-        //     Airbnb_House:{default:""},
-        //      add_page:{default:""}
-        //     },                  
-        created() {
-            this.loadMore();
+        {
+          Rent_name: ""
         },
-        methods: {
-            loadMore() {
-                this.axios.get("http://127.0.0.1:3000/add/housingResources_Type").then(result => {
-                    this.housingResources_Type = result.data;
-                })
-                this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
-                    this.Rent_Type = result.data;
-                    //console.log(this.Rent_Type)
-                })
-                //setTimeout(function(){this.Rentselect(0);},3000)
-                // console.log(add_page)
-                // if(this.add_page>=0){
-                //     this.Airbnb_House.Rent_Type=0;
-                // }  
-            },
-            submit() {
-                // console.log(11)   
-                this.$emit('change',2);        
-                this.$router.push("/add_become_a_host_room/bedrooms?id=6")
-                // this.$router.push({path:'/add_become_a_host_room/bedrooms' , params: { add_page:this.add_page }})
-                // this.$router.params.this.Airbnb_House       
-            },
-            return1() {
-                // this.$router.push("/index")
-                 this.$router.go(-1)
-            },
-            show() {
-                var div = document.getElementById("housingResources");
-                var divs = div.childNodes;
-                for (var divc of divs) {
-                    //console.log(divc)
-                    divc.style.display = "block"
-                }
-                var type = document.getElementById("type");
-                type.style.display = "none"
-            },
-            select(i) {
-                var div = document.getElementById("housingResources");
-                var divs = div.childNodes;
-                for (var divc of divs) {
-                    divc.style.background = "rgb(242,242,242)"
-                }
-                divs[i].style.background = "rgb(178,218,219)"
-                //this.Airbnb_House.House_Building=i;
-            },
-            Rentselect(i) {
-                var Rent_Type = document.getElementById("Rent_Type")
-                var Rent_Types = Rent_Type.childNodes;
-                for (var Rent_Typec of Rent_Types) {
-                    Rent_Typec.style.background = "rgb(242,242,242)"
-                }
-                Rent_Types[i].style.background = "rgb(178,218,219)"
-                // this.Airbnb_House.House_type=i;
-            }
+        {
+          Rent_name: ""
         }
+      ]
+    };
+  },
+  // props:{
+  //     Airbnb_House:{default:""},
+  //      add_page:{default:""}
+  //     },
+  created() {
+    this.loadMore();
+  },
+  methods: {
+    loadMore() {
+      this.axios
+        .get("http://127.0.0.1:3000/add/housingResources_Type")
+        .then(result => {
+          this.housingResources_Type = result.data;
+        });
+      this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
+        this.Rent_Type = result.data;
+        //console.log(this.Rent_Type)
+      });
+      //setTimeout(function(){this.Rentselect(0);},3000)
+      // console.log(add_page)
+      // if(this.add_page>=0){
+      //     this.Airbnb_House.Rent_Type=0;
+      // }
+    },
+    submit() {
+      // console.log(11)
+      this.$emit("change", 2);
+      this.$router.push("/add_become_a_host_room/bedrooms?id=6");
+      // this.$router.push({path:'/add_become_a_host_room/bedrooms' , params: { add_page:this.add_page }})
+      // this.$router.params.this.Airbnb_House
+    },
+    return1() {
+      // this.$router.push("/index")
+      this.$router.go(-1);
+    },
+    show() {
+      var div = document.getElementById("housingResources");
+      var divs = div.childNodes;
+      for (var divc of divs) {
+        //console.log(divc)
+        divc.style.display = "block";
+      }
+      var type = document.getElementById("type");
+      type.style.display = "none";
+    },
+    select(i) {
+      var div = document.getElementById("housingResources");
+      var divs = div.childNodes;
+      for (var divc of divs) {
+        divc.style.background = "rgb(242,242,242)";
+      }
+      divs[i].style.background = "rgb(178,218,219)";
+      //this.Airbnb_House.House_Building=i;
+    },
+    Rentselect(i) {
+      var Rent_Type = document.getElementById("Rent_Type");
+      var Rent_Types = Rent_Type.childNodes;
+      for (var Rent_Typec of Rent_Types) {
+        Rent_Typec.style.background = "rgb(242,242,242)";
+      }
+      Rent_Types[i].style.background = "rgb(178,218,219)";
+      // this.Airbnb_House.House_type=i;
     }
+  }
+};
 </script>
 <style scoped>
-   
-    .div_body {
-        width: 912px;
-        margin: auto;
-    }
+.div_body {
+  width: 60%;
+  margin:auto;
+}
 
-    .div_body>div {
-        width: 60%;
-        box-sizing: border-box;
-        padding: 30px 30px 16px 30px;
-        padding-bottom: 102px;
-        background: #fff;
-    }
+.div_body > div {
+  width: 60%;
+  box-sizing: border-box;
+  padding: 30px 30px 16px 30px;
+  padding-bottom: 102px;
+  background: #fff;
+}
 
-    .div_title {
-        padding: 32px 0 24px;
-    }
+.div_title {
+  padding: 32px 0 24px;
+}
 
-    .font_title1 {
-        font-size: 24px;
-        font-weight: 800;
-        line-height: 1.25em;
-        color: #484848;
-        padding: 32px 0 24px;
-    }
+.font_title1 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.25em;
+  color: #484848;
+  padding: 32px 0 24px;
+}
 
-    .div_body1 {
-        margin: 40px 0 16px;
-    }
+.div_body1 {
+  margin: 40px 0 16px;
+}
 
-    .font_title2 {
-        font-size: 18px;
-        font-weight: 600;
-        line-height: 1.44444em;
-        color: rgb(72, 72, 72);
-    }
+.font_title2 {
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.44444em;
+  color: rgb(72, 72, 72);
+}
 
-    .div_btn {
-        margin: 16px -8px;
-    }
+.div_btn {
+  margin: 16px -8px;
+}
 
-    .div_btn:after {
-        content: "";
-        display: block;
-        clear: both;
-    }
+.div_btn:after {
+  content: "";
+  display: block;
+  clear: both;
+}
 
-    .div_body1 .div_btn>div {
-        float: left;
-        box-sizing: border-box;
-        color: rgb(72, 72, 72);
-        font-size: 14px;
-        width: calc(25% - 16px);
-        margin: 9px 8px;
-        height: 20px;
-        padding: 7px 0;
-        background: rgb(242, 242, 242);
-        border: none;
-        border-radius: 4px;
-        height: 34px;
-        text-align: center;
-        cursor: pointer;
-    }
+.div_body1 .div_btn > div {
+  float: left;
+  box-sizing: border-box;
+  color: rgb(72, 72, 72);
+  font-size: 14px;
+  width: calc(25% - 16px);
+  margin: 9px 8px;
+  height: 20px;
+  padding: 7px 0;
+  background: rgb(242, 242, 242);
+  border: none;
+  border-radius: 4px;
+  height: 34px;
+  text-align: center;
+  cursor: pointer;
+}
 
-    .div_body1 .div_btn>div button {
-        padding: 7px 0;
-    }
+.div_body1 .div_btn > div button {
+  padding: 7px 0;
+}
 
-    .div_body1 a {
-        color: #008489;
-        font-weight: bold;
-        padding: 10px 7px;
-    }
+.div_body1 a {
+  color: #008489;
+  font-weight: bold;
+  padding: 10px 7px;
+}
 
-    .return_btn:hover {
-        text-decoration: underline;
-    }
+.return_btn:hover {
+  text-decoration: underline;
+}
 
-    .div_body2 .div_btn>div {
-        float: left;
-        box-sizing: border-box;
-        color: rgb(72, 72, 72);
-        font-size: 14px;
-        width: calc(33.33% - 16px);
-        margin: 9px 8px;
-        padding: 16px;
-        background: rgb(242, 242, 242);
-        border: none;
-        border-radius: 4px;
-        text-align: left;
-        cursor: pointer;
-    }
+.div_body2 .div_btn > div {
+  float: left;
+  box-sizing: border-box;
+  color: rgb(72, 72, 72);
+  font-size: 14px;
+  width: calc(33.33% - 16px);
+  margin: 9px 8px;
+  padding: 16px;
+  background: rgb(242, 242, 242);
+  border: none;
+  border-radius: 4px;
+  text-align: left;
+  cursor: pointer;
+}
 
-    .font_title3 {
-        font-weight: 400;
-        font-size: 16px;
-        margin-top: 8px;
-    }
+.font_title3 {
+  font-weight: 400;
+  font-size: 16px;
+  margin-top: 8px;
+}
 
-    .font_title3+div {
-        font-weight: 300;
-        line-height: 18px;
-    }
+.font_title3 + div {
+  font-weight: 300;
+  line-height: 18px;
+}
 
-    #housingResources>div:nth-child(12)~div {
-        display: none;
-    }
+#housingResources > div:nth-child(12) ~ div {
+  display: none;
+}
 
-    /*默认选中第一个*/
-    .Rent_Type_select {
-        background: rgb(178, 218, 219);
-    }
-
+/*默认选中第一个*/
+.Rent_Type_select {
+  background: rgb(178, 218, 219);
+}
 </style>
 <!-- 底部样式 -->
 <style>
-    
-    .div_footer1 {
-        width: 100%;
-        position: fixed;
-        left: 0px;
-        bottom: 0px;
-        z-index: 100;
-        height:90px;
-    }
+.div_footer1 {
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  z-index: 100;
+  height: 90px;
+}
 
-    .div_footer1>div {
-        max-width: 912px;
-        margin: auto;
-        height:90px;
-    }
+.div_footer1 > div {
+  width: 60%;
+  margin: auto;
+  height: 90px;
+}
 
-    .div_margin {
-        background: #fff;
-        width: 60%;
-        height: 90px;
-        box-sizing: border-box;
-    }
-    .div_margin>div:first-child {
-        border: 1px solid #dce0e0;
-        box-sizing: border-box;
-        margin: 0 30px;
-    }
+.div_margin {
+  background: #fff;
+  width: 60%;
+  height: 90px;
+  box-sizing: border-box;
+}
+.div_margin > div:first-child {
+  border: 1px solid #dce0e0;
+  box-sizing: border-box;
+  margin: 0 30px;
+}
 
-    .div_margin>div:nth-child(2) {
-        padding: 0 30px 16px 30px;
-    }
-    .div_return_submit:after{
-        content: "";
-        display:block;
-        clear: both;
-    }
-    .div_return_submit{
-        margin-top: 20px;
-        width: 100%;
-    }
-    .div_return_submit svg{
-        color: #008489;
-    }
-    .div_div_svg_return1{
-        float: left;
-    }
-    .return_btn {
-        display: block;
-        float: left;
-        color: #008489;
-        font-weight: bold;
-        padding: 10px 7px;
-        height: 48px;
-    }
+.div_margin > div:nth-child(2) {
+  padding: 0 30px 16px 30px;
+}
+.div_return_submit:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.div_return_submit {
+  margin-top: 20px;
+  width: 100%;
+}
+.div_return_submit svg {
+  color: #008489;
+}
+.div_div_svg_return1 {
+  float: left;
+}
+.return_btn {
+  display: block;
+  float: left;
+  color: #008489;
+  font-weight: bold;
+  padding: 10px 7px;
+  height: 48px;
+}
 
-    .a_footer1:hover {
-        text-decoration: underline;
-    }
+.a_footer1:hover {
+  text-decoration: underline;
+}
 
-    .next_btn {
-        float: right;
-        height: 48px;
-        width: 96px;
-        padding: 12px 22px;
-        box-sizing: border-box;
-        background: #008489;
-        border-radius: 5%;
-        font-size: 16px;
-        font-weight: 600;
-        color: #fff;
-    }
+.next_btn {
+  float: right;
+  height: 48px;
+  min-width: 12%;
+  max-width: 24%;
+  padding: 12px 22px;
+  box-sizing: border-box;
+  background: #008489;
+  border-radius: 5%;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  text-align:center;
+}
 </style>
-<!-- 背景色 -->
+<!-- 背景色+两个常用字号 -->
 <style>
-    .div_bgfff{
-        width:50%;
-        background: #fff;
-        z-index: -1;
-        position: fixed;
-        top:0px;
-        left:0px;
-        bottom:0px;
-    }
+.div_bgfff {
+position: fixed;
+width:50%;
+background: #fff;
+z-index: -1;
+top:0px;
+left:0px;
+bottom:0px;
+}
+.div_bgfff2{
+position: fixed;
+width:44%;;
+background: #f8f8f8;
+z-index: -1;
+top:0px;
+right:0px;
+bottom:0px;
+}
+.div_title {
+  padding: 32px 0 24px;
+}
+
+.font_title1 {
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 1.25em;
+  color: #484848;
+  padding: 32px 0 10px;
+}
+
+.font-title3 {
+  font-weight: 400;
+  line-height: 1.375em;
+  color: rgb(72, 72, 72);
+  margin-bottom: 32px;
+}
 </style>

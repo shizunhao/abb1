@@ -1,7 +1,8 @@
 <template>
     <!-- 房客数量，床数量，床型 -->
-    <div class="div_bg" style="background: #f8f8f8;">
+    <div class="div_bg">
         <div class="div_bgfff"></div>
+        <div class="div_bgfff2"></div>
         <div class="div_body" style="padding-top:74px;">
             <div>
                 <div class="div_title font_title1">
@@ -490,7 +491,7 @@
  
 
     .div_body {
-        width: 912px;
+        width: 60%;
         margin: auto;
         font-size: 16px;
     }

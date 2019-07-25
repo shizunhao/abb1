@@ -1,5 +1,7 @@
 <template>
     <div class="div_bg">
+        <div class="div_bgfff"></div>
+        <div class="div_bgfff2"></div>
         <div class="div_body" >
             <div>
                 <div class="div_body1"></div>
@@ -14,9 +16,7 @@ export default {
      data(){return{
         
     }},
-    props:{
-        Airbnb_House:{default:""}
-    }
+    
 }
 </script>
 <style scoped>
@@ -24,10 +24,9 @@ export default {
     background: #f8f8f8;
 }
 .div_body{
-    width:912px;
+    width:60%;
     margin: auto;
     font-size: 16px;
-    padding-top:74px;
 }
 .div_body>div{
     width:60%;

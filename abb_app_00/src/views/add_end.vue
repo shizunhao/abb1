@@ -8,7 +8,7 @@
                         <div>有消息我们会及时通知您</div>
                     </div>
                     <div style="margin-top:50px;">
-                        <router-link to="/index" class="btn">回到首页</router-link>
+                        <router-link to="/index" class="btn">&nbsp;回到首页</router-link>
                         <p style="font-size:16px;margin-left:60px;">3秒后将自动回到首页</p>
                     </div>
                 </div>
@@ -28,7 +28,7 @@
             load(){
                 setTimeout(()=>{
                     this.$router.push("/index")
-                },3000)
+                },300000)
             }
         },
         mounted(){
@@ -51,7 +51,7 @@
     .btn{
         display: block;
         height:48px;
-        width: 109px;
+        width:40%;
         padding: 12px 22px;
         margin:0px 0px 39px 77px;
         box-sizing: border-box;
