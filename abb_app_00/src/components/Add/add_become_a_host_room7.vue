@@ -71,38 +71,15 @@
                 House_number: "",
                 House_name: "",
                 House_User_id: 1,
+                ceshi:333
             }
         },
         methods: {
             submit() {
                 localStorage.setItem("House_name", this.House_name)
-                this.axios.get("http://127.0.0.1:3000/add/housingResources_Type").then(result => {
-                    this.housingResources_Type = result.data;
-                    //console.log(this.housingResources_Type)
-                })
-                this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
-                    this.Rent_Type = result.data;
-                    // console.log(this.Rent_Type)//对象
-                    this.House_type = parseInt(localStorage.getItem("House_type"))
-
-
-                    // console.log(this.House_type,789)//能出结果
-                    // console.log(this.Rent_Type[this.House_type].Rent_name,789)
-                    this.House_type = this.Rent_Type[this.House_type].Rent_name
-                })
-                // console.log(this.House_type);
-                // for(var i=0;i<this.Rent_Type.length;i++){
-                //     console.log(888)
-                //     if(i==local_rent){
-                //         console.log(999)
-                //         this.House_type=this.Rent_Type.Rent_name;
-                //         console.log(this.House_type);
-                //     }
-                // }
-
-
-                // (localStorage.getItem("House_type"))
-                // console.log(localStorage.getItem("House_Building"))
+                // this.housingResources_Type=localStorage.getItem("House_type")
+                this.House_type = localStorage.getItem("House_type")
+                
 
                 this.House_people_num = localStorage.getItem("House_people_num")
                 // console.log(this.House_people_num)
@@ -159,9 +136,19 @@
                 //      console.log(result.data);
                 //     console.log(this.housingResources_Type)
                 // })
-
-
-
+                //测试接口
+                // var ceshi=3
+                // var ceshi2=444
+                // this.axios.get("http://127.0.0.1:3000/add/ceshi", {params: {
+                //  "ceshi":ceshi
+                // }})
+                // .then(result => {
+                //     console.log(11)
+                //     console.log(11)
+                //      console.log(result.data);
+                // })
+                
+            
                 this.$router.push("/add_end")
             },
             return1() {
