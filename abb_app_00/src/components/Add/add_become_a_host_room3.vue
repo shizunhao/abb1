@@ -90,7 +90,8 @@ export default {
       this.$router.push("/add_become_a_host_room/location");
     },
     return1() {
-      this.$router.push("/add_become_a_host_room/bedrooms");
+      // this.$router.push("/add_become_a_host_room/bedrooms");
+      this.$router.go(-1);
     },
 
     bed_count(z) {

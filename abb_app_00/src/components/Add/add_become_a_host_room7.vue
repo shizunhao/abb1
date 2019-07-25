@@ -130,7 +130,8 @@
                 this.$router.push("/add_end")
             },
             return1() {
-                this.$router.push("/add_become_a_host_room/photos")
+                // this.$router.push("/add_become_a_host_room/photos")
+                this.$router.go(-1);
             },
             House_namechange() {
                 // this.Airbnb_House.House_name = this.House_name;

@@ -125,6 +125,9 @@ export default {
       this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
         this.Rent_Type = result.data;
       });
+       setTimeout(() => {
+                this.localStorage()
+            }, 80)
     },
     submit() {
       localStorage.setItem("House_type", this.Rent_Type1)
@@ -167,7 +170,14 @@ export default {
       Rent_Types[i].style.background = "rgb(178,218,219)";
        this.Rent_Type1=i;
       // console.log(this.Rent_Type1)
+    },
+    localStorage(){
+      let n = localStorage.getItem("House_Building")
+      this.select(n);
+      let m = localStorage.getItem("House_type")
+      this.Rentselect(m)
     }
+
   }
 };
 </script>

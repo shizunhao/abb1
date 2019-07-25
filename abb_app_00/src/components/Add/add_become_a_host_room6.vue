@@ -69,7 +69,8 @@
                 this.$router.push("/add_become_a_host_room/description")
             },
             return1() {
-                this.$router.push("/add_become_a_host_room/location2")
+                // this.$router.push("/add_become_a_host_room/location2")
+                this.$router.go(-1);
             },
         }
     }

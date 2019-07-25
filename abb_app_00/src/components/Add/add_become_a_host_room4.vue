@@ -100,7 +100,8 @@
                 this.$router.push({path: '/add_become_a_host_room/location2', query: {key: this.districtid}})
             },
             return1() {
-                this.$router.push("/add_become_a_host_room/bathrooms")
+                // this.$router.push("/add_become_a_host_room/bathrooms")
+                this.$router.go(-1);
             },
             loadMore() {
                 this.axios.get("http://127.0.0.1:3000/add/City").then(result => {

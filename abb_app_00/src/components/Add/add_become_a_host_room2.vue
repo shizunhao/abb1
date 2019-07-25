@@ -311,7 +311,8 @@
                 this.$router.push("/add_become_a_host_room/bathrooms")
             },
             return1() {
-                this.$router.push("/add_become_a_host_room/room")
+                // this.$router.push("/add_become_a_host_room/room")
+                this.$router.go(-1);
             },
             loadMore1() {
                 // if(this.add_page>=1){
