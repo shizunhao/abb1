@@ -1,6 +1,9 @@
 <template>
   <div>
-    <user-header></user-header>
+    <div style="height:61px;">
+      <!-- 引入头组件 -->
+      <user-header style='position:fixed; top:0; background:#ffffff; width:100%;'></user-header>
+    </div>
     <div class="guide">
       <div class="guide_top">
         <div style="font-size:30px;">旅游指南</div>
