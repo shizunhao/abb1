@@ -154,7 +154,7 @@
                         <!--隐藏的查看更多-->
                         <div class="addressmore" style="display:none;">
                             <div>
-                                <div style="font-size:30px;cursor: pointer;" @click="addressmore">×</div>
+                                <div class="close" @click="addressmore">×</div>
                                 <h1>位置</h1>
                                 <div style="margin-top:32px;font-weight: 800">
                                     <div>{{houseData[0].House_address}}</div>
@@ -173,10 +173,10 @@
                             </div>
                         </div>
                         <div class="map">
-                            <div class="mapimg">
-                                <img src="https://restapi.amap.com/v3/staticmap?key=a7708a7c3c84313afa7ac50b3cdf0bf7&location=116.41322,39.89574&zoom=13&size=595*280" alt="">
-                                <img src="https://z1.muscache.cn/airbnb/static/packages/home_pin.fb50ae56.png" alt="">
-                                <div class="maplg">放大地图</div>
+                            <div class="mapimg" >
+                                <img @click="moremap" src="https://restapi.amap.com/v3/staticmap?key=a7708a7c3c84313afa7ac50b3cdf0bf7&location=116.41322,39.89574&zoom=13&size=595*280" alt="">
+                                <img @click="moremap" src="https://z1.muscache.cn/airbnb/static/packages/home_pin.fb50ae56.png" alt="">
+                                <div class="maplg" @click="moremap">放大地图</div>
                             </div>
                             <div class="mapmessage">
                                 <div>
@@ -192,8 +192,9 @@
                                         <svg t="1563535648867" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15165" width="16" height="16"><path d="M786.068006 789.334399l47.366797 168.918177-63.683415 0-15.646352-62.577221-482.253512 0-15.646352 62.577221-64.695464 0 47.355541-168.923294c-61.891605-7.643074-112.031563-59.812247-112.031563-123.764791L126.833687 226.983641c0-69.206198 58.154491-125.311007 127.360689-125.311007L382.577349 101.672634 382.577349 39.017642l260.870426 0 0 62.654992 127.360689 0c69.205175 0 125.308961 56.103786 125.308961 125.311007l0 438.58085C896.117424 729.545688 847.989287 781.730211 786.068006 789.334399L786.068006 789.334399zM766.708076 665.564491 766.708076 540.253484l-62.654992 0 0 125.311007L766.708076 665.564491 766.708076 665.564491zM734.337831 830.970682l-12.592806-40.095183L303.189254 790.875498l-12.593829 40.095183L734.337831 830.970682 734.337831 830.970682zM254.194376 665.564491l62.654992 0L316.849368 540.253484l-62.654992 0L254.194376 665.564491 254.194376 665.564491zM190.510962 226.983641l0 250.615874 256.771061 0L447.282023 226.983641 190.510962 226.983641 190.510962 226.983641zM574.641689 101.672634 446.258717 101.672634l0 62.656015L574.641689 164.328649 574.641689 101.672634 574.641689 101.672634zM832.441173 226.983641 574.641689 226.983641l0 250.615874 257.799484 0L832.441173 226.983641 832.441173 226.983641zM832.441173 226.983641" p-id="15166"></path></svg>
                                     </div>
                                     <div>
-                                        附近地铁站：磁器口（约500米）、崇文门（约700米）、桥湾（约700米）                                    </div>
+                                        附近地铁站：磁器口（约500米）、崇文门（约700米）、桥湾（约700米）
                                     </div>
+                                </div>
                                 <div>
                                     <div>
                                         <svg t="1563535707100" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16330" width="16" height="16"><path d="M897.5 126.6c16.7 19.8 19 47.9 6.9 84.5-12.1 36.5-32.8 69.3-61.7 98.2l-92 91.9 91.5 397.1c1.9 7.2-0.4 13.6-6.9 18.8l-73.1 54.7c-2.6 2.3-6.3 3.4-10.8 3.4-1.5 0-2.8-0.2-3.9-0.6-5.8-1.2-9.7-4.2-12-9.1L576.1 575.8 428.4 723.5l30.2 110.6c1.9 6.5 0.4 12.3-4.6 17.6l-54.8 55c-3.4 3.4-7.8 5.2-13 5.2H385c-5.8-0.7-10.3-3.2-13.7-7.5l-108-143.8-143.8-107.7c-4.2-2.6-6.6-7.1-7.5-13-0.4-5 1.3-9.7 5.2-14.3l54.7-55.3c3.4-3.4 7.8-5.2 13-5.2 2.3 0 3.8 0.2 4.6 0.6l110.6 30.2 147.7-147.7-289.4-159.6c-5.3-3-8.5-7.6-9.7-13.7-0.7-6.2 0.9-11.1 5.2-15.4l73.1-73.1c5.3-5 11-6.5 17.2-4.6l379.5 90.7 91.3-91.3c28.9-28.9 61.7-49.4 98.2-61.7 36.2-12 64.5-9.6 84.3 7.1z" p-id="16331"></path></svg>
@@ -210,10 +211,53 @@
                                         房源具体位置将在预订确认后提供
                                     </div>
                                 </div>
-                                <div><a href="">查看更多周边信息</a></div>
+                                <div><a @click="moremap">查看更多周边信息</a></div>
                             </div>
                         </div>
-                        <div class="moremap"></div>
+                        <div class="moremap addressmore" style="display: none" >
+                            <div>
+                                <div class="close" @click="moremap">×</div>
+                                <div class="open">
+                                    <div class="left">
+                                        <div>
+                                            <span @click="mapnav(1)" :class="{mapnavbottom:changeBlue==1}"><svg t="1563534899772" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="12872" width="10" height="10"><path d="M497.839884 374.125182c-98.375546 0-178.864629 80.489083-178.864629 178.864629 0 46.206696 17.886463 89.432314 47.697234 120.733624 32.791849 35.772926 78.998544 58.131004 131.167395 58.131005 98.375546 0 178.864629-80.489083 178.864628-178.864629 0-44.716157-16.395924-84.960699-43.225618-116.262009-31.30131-37.263464-80.489083-62.60262-135.63901-62.60262z" fill="#030000" p-id="12873"></path><path d="M892.832606 271.27802h-17.886463v-7.452692h-126.695779v7.452692h-116.262009l22.358079-22.358078V163.959243H344.31441v84.960699l22.358079 22.358078H104.3377c-16.395924 0-29.810771 13.414847-29.810771 29.810772v484.425036c0 16.395924 13.414847 29.810771 29.810771 29.810772h788.494906c16.395924 0 29.810771-13.414847 29.810771-29.810772V301.088792c0-16.395924-13.414847-29.810771-29.810771-29.810772zM719.930131 624.535662c-29.810771 93.90393-117.752547 160.978166-220.599709 160.978166s-190.788937-67.074236-220.599709-160.978166c-7.452693-22.358079-11.924309-46.206696-11.924308-71.545851 0-32.791849 5.962154-64.093159 19.377001-90.922853 35.772926-83.47016 117.752547-140.110626 213.147016-140.110626s177.37409 58.131004 213.147016 140.110626c11.924309 28.320233 19.377001 59.621543 19.377002 90.922853-1.490539 25.339156-5.962154 49.187773-11.924309 71.545851z" fill="#030000" p-id="12874"></path><path d="M135.63901 329.409025m-28.320233 0a28.320233 28.320233 0 1 0 56.640466 0 28.320233 28.320233 0 1 0-56.640466 0Z" fill="#030000" p-id="12875"></path><path d="M400.954876 183.336245H596.215429v44.716157H400.954876zM742.28821 229.54294h135.63901v32.791849h-135.63901z" fill="#030000" p-id="12876"></path></svg> 热门</span>
+                                            <span @click="mapnav(2)" :class="{mapnavbottom:changeBlue==2}"><svg t="1563535648867" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="15165" width="10" height="10"><path d="M786.068006 789.334399l47.366797 168.918177-63.683415 0-15.646352-62.577221-482.253512 0-15.646352 62.577221-64.695464 0 47.355541-168.923294c-61.891605-7.643074-112.031563-59.812247-112.031563-123.764791L126.833687 226.983641c0-69.206198 58.154491-125.311007 127.360689-125.311007L382.577349 101.672634 382.577349 39.017642l260.870426 0 0 62.654992 127.360689 0c69.205175 0 125.308961 56.103786 125.308961 125.311007l0 438.58085C896.117424 729.545688 847.989287 781.730211 786.068006 789.334399L786.068006 789.334399zM766.708076 665.564491 766.708076 540.253484l-62.654992 0 0 125.311007L766.708076 665.564491 766.708076 665.564491zM734.337831 830.970682l-12.592806-40.095183L303.189254 790.875498l-12.593829 40.095183L734.337831 830.970682 734.337831 830.970682zM254.194376 665.564491l62.654992 0L316.849368 540.253484l-62.654992 0L254.194376 665.564491 254.194376 665.564491zM190.510962 226.983641l0 250.615874 256.771061 0L447.282023 226.983641 190.510962 226.983641 190.510962 226.983641zM574.641689 101.672634 446.258717 101.672634l0 62.656015L574.641689 164.328649 574.641689 101.672634 574.641689 101.672634zM832.441173 226.983641 574.641689 226.983641l0 250.615874 257.799484 0L832.441173 226.983641 832.441173 226.983641zM832.441173 226.983641" p-id="15166"></path></svg> 地铁站</span>
+                                            <span @click="mapnav(3)" :class="{mapnavbottom:changeBlue==3}"><svg t="1563535707100" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16330" width="10" height="10"><path d="M897.5 126.6c16.7 19.8 19 47.9 6.9 84.5-12.1 36.5-32.8 69.3-61.7 98.2l-92 91.9 91.5 397.1c1.9 7.2-0.4 13.6-6.9 18.8l-73.1 54.7c-2.6 2.3-6.3 3.4-10.8 3.4-1.5 0-2.8-0.2-3.9-0.6-5.8-1.2-9.7-4.2-12-9.1L576.1 575.8 428.4 723.5l30.2 110.6c1.9 6.5 0.4 12.3-4.6 17.6l-54.8 55c-3.4 3.4-7.8 5.2-13 5.2H385c-5.8-0.7-10.3-3.2-13.7-7.5l-108-143.8-143.8-107.7c-4.2-2.6-6.6-7.1-7.5-13-0.4-5 1.3-9.7 5.2-14.3l54.7-55.3c3.4-3.4 7.8-5.2 13-5.2 2.3 0 3.8 0.2 4.6 0.6l110.6 30.2 147.7-147.7-289.4-159.6c-5.3-3-8.5-7.6-9.7-13.7-0.7-6.2 0.9-11.1 5.2-15.4l73.1-73.1c5.3-5 11-6.5 17.2-4.6l379.5 90.7 91.3-91.3c28.9-28.9 61.7-49.4 98.2-61.7 36.2-12 64.5-9.6 84.3 7.1z" p-id="16331"></path></svg> 机场/火车站</span>
+                                        </div>
+                                        <div>
+                                            <div class="hot">
+                                                <div>
+                                                    <div>
+                                                        <div>1.天坛</div>
+                                                        <div>约1.6公里</div>
+                                                    </div>
+                                                    <div>景点</div>
+                                                </div>
+                                            </div>
+                                            <div class="subway" style="display:none">
+                                                <div>
+                                                    <div>
+                                                        <div>1.天坛</div>
+                                                        <div>约1.6公里</div>
+                                                    </div>
+                                                    <div>景点</div>
+                                                </div>
+                                            </div>
+                                            <div class="plane" style="display:none">
+                                                <div>
+                                                    <div>
+                                                        <div>1.天坛</div>
+                                                        <div>约1.6公里</div>
+                                                    </div>
+                                                    <div>景点</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="right" id="map"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="notice" >
                         <h1>须知</h1>
@@ -224,13 +268,13 @@
                                     <p>禁止吸烟</p>
                                     <p>不允许携带宠物</p> 
                                     <p>不允许举办派对和活动</p> 
-                                    <a href="">房屋守则</a> 
+                                    <a @click="moremap">房屋守则</a> 
                                 </div>
                             </div>
                             <div>
-                                <div style="font-weight: 800">取消政策</div>
+                                <div style="font-weight:800">取消政策</div>
                                 <div>
-                                    中等<a href="">查看完整详情</a> 
+                                    中等<a @click="moremap">查看完整详情</a> 
                                 </div>
                             </div>
                             <div>
@@ -242,7 +286,7 @@
                             <div>
                                 <div style="font-weight: 800">交易提示</div>
                                 <div>
-                                    为了保护您的账号隐私和付款安全，请不要相信其它任何平台的折扣或礼金券代订，并始终在爱彼迎站内转账和交流。 <a href="" style="font-size: 16px">查看详情</a>  
+                                    为了保护您的账号隐私和付款安全，请不要相信其它任何平台的折扣或礼金券代订，并始终在爱彼迎站内转账和交流。 <a @click="moremap" style="font-size: 16px">查看详情</a>  
                                 </div>
                             </div>
                         </div>
@@ -269,12 +313,12 @@
                                 我喜欢打游戏~  如果有小哥哥小姐姐来我家住觉得无聊的话,我可以陪你们打游戏鸭!!三级头三级甲98k全是你的!!如果喜欢手游,吃鸡王者阴阳师第五人格随便挑!!如果喜欢大厂,Steam暴雪EA育碧随便挑~~
                                 如果你心情不好,郁闷难过了,我也可以当你的树洞,听你发泄~陌生人其实是你不错的聆听者呢~
                             </div>
-                            <a href="">查看更多</a>
+                            <a @click="moremap">查看更多</a>
                         </div>
                         <div>
                             <div>与客房的互动</div>
                             <div style="margin: 30px 0">·</div>
-                            <a href="">查看更多</a>
+                            <a @click="moremap">查看更多</a>
                         </div>
                         <div style="margin:30px 0;white-space: pre-wrap">语言：العربية, Bengali, 中文, Čeština, Dansk, Nederlands, English, Suomi, Français, Deutsch, Eλληνικά, עברית, Hindi, Magyar, Bahasa, Italiano, 日本語, 한국어, Bahasa Melayu, Norsk, Polski, Português, Punjabi, Русский, Sign, Español, Svenska, Tagalog, ภาษาไทย, Türkçe, Українська
 回复率：99% 
@@ -302,15 +346,16 @@
                                 <div><p>旅行安全保障</p><p>多重风险控制设计</p></div>
                             </div>
                         </div>
-                        <a href="">查看全方位保障计划</a>
+                        <a @click="moremap">查看全方位保障计划</a>
                     </div>
                     <div class="more" >
                         <h1>更多适合您的房源</h1>
-                        
+                        <div>
+
+                        </div>
                     </div>
                     <div class="other" >
                         <h1>北京附近的其他选择</h1>
-
 
                     </div>
                 </div>
@@ -333,31 +378,31 @@
                             人数
                             <div> 
                                 <div style="padding: 15px;height:20px;cursor: pointer;">
-                                    1人
+                                    {{peoplenum1+peoplenum2}}人
                                 </div>
                                 <div class="changenum">
                                     <div class="changenum1">
                                         <div>成人</div>
                                         <div>
-                                            <div class="reduce" @click=""><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect></svg></div>
-                                            <div class="number"> 1 </div>
-                                            <div class="add"><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect><rect height="12" rx="1" width="2" x="11" y="6"></rect></svg></div>
+                                            <div class="reduce" @click="desc(1)"><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect></svg></div>
+                                            <div class="number"> {{peoplenum1}}</div>
+                                            <div class="add" @click="add(1)"><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect><rect height="12" rx="1" width="2" x="11" y="6"></rect></svg></div>
                                         </div>
                                     </div>
                                     <div class="changenum1">
                                         <div>儿童<p style="font-size:10px;color:#666">2 - 12岁</p></div>
                                         <div>
-                                            <div class="reduce"><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect></svg></div>
-                                            <div class="number"> 0 </div>
-                                            <div class="add"><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect><rect height="12" rx="1" width="2" x="11" y="6"></rect></svg></div>
+                                            <div class="reduce" @click="desc(2)"><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect></svg></div>
+                                            <div class="number"> {{peoplenum2}} </div>
+                                            <div class="add" @click="add(2)"><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect><rect height="12" rx="1" width="2" x="11" y="6"></rect></svg></div>
                                         </div>
                                     </div>
                                     <div class="changenum1">
                                         <div>婴儿<p style="font-size:10px;color:#666">2岁以下</p></div>
                                         <div>
-                                            <div class="reduce"><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect></svg></div>
-                                            <div class="number"> 0 </div>
-                                            <div class="add"><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect><rect height="12" rx="1" width="2" x="11" y="6"></rect></svg></div>
+                                            <div class="reduce" @click="desc(3)"><svg viewBox="0 0 24 24" role="img" aria-label="subtract" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect></svg></div>
+                                            <div class="number">{{peoplenum3}}</div>
+                                            <div class="add" @click="add(3)"><svg viewBox="0 0 24 24" role="img" aria-label="add" focusable="false" style="height: 1em; width: 1em; display: block; fill: currentcolor;"><rect height="2" rx="1" width="12" x="6" y="11"></rect><rect height="12" rx="1" width="2" x="11" y="6"></rect></svg></div>
                                         </div>
                                     </div>
                                     <div class="changenum1" style="padding:0px 15px">
@@ -369,6 +414,10 @@
                                     
                                 </div>
                             </div>
+                        </div>
+                        <div style="display:flex;justify-content: space-between;border-bottom:1px solid #ddd;margin:20px 0;padding:10px 0;position: absolute;bottom:60px;width:90%;z-index:-1">
+                            <div style="font-weight:800">总价</div>
+                            <div><span style="font-weight:800">￥</span>{{parseInt(this.houseData[0].House_price*0.9)}}</div>
                         </div>
                         <div class="yuding" >预定 </div>
                     </div>
@@ -385,8 +434,9 @@ export default {
     data(){
         return {
             houseData:[{HouseImg_lg:""}],
-            houseId:1,
+            houseId:13,
             changeBlack:0,
+            changeBlue:1,
             labels:[],
             roomnum:[],
             messages:[],
@@ -398,7 +448,10 @@ export default {
             value2:"2019-7-18",
             bed2count:0,
             verb:["如实描述","位置便利","沟通交流","入住顺利","干净卫生","高性价比",],
-            i:0
+            i:0,
+            peoplenum1:1,
+            peoplenum2:0,
+            peoplenum3:0
         }
   },
     methods: {
@@ -453,9 +506,9 @@ export default {
                 main_main.style.marginTop="71px"
                 share.style.position="fixed";
                 save.style.position="fixed";
-                share.style.right="265px";
-                save.style.right="150px";
-                rightdate.style="position:fixed;top:80px;width:26%;right:150px"
+                share.style.right="200px";
+                save.style.right="88px";
+                rightdate.style="position:fixed;top:80px;width:28.5%;right:88px"
             }else if(scrollTop>=5200){
                 rightdate.style="position:absolute;top:4700px;width:83.5%;right:0px"
             }else{
@@ -507,7 +560,6 @@ export default {
         },
         more(){
             this.$alert("概要：Hi,很开心在这个美好的季节与你相遇,分享家和生活,你想知道的都在下面啦:｢Sunny｣位于二环里人气旺盛的｢崇文门商圈｣楼下便是帝都老牌商业街,新世界百货､国瑞城购物中心｡而我的房子更像是隐秘城市的一处后花园｡｢超大的私人露天阳台非常惬意｣,7层楼高视野非常广阔~躺在被大片绿植拥抱的露台中央,轻轻摇晃躺椅,微风吹过,飘来薄荷柠檬加冰的清凉水汽,此时再来放一点夏日电音,忍不住在自己露台上放肆跳起来~是二环里最独一无二的享受之家了!｢卧室｣的落地玻璃大窗与露台相连,房间里淡蓝色的地中海元素带来度假气息,可住2人｡阳光和风景一揽入怀,躺在绵软的大床上,拥有一个自然醒的早晨｡+位置极好:- 楼下300米就是老牌商圈【崇文门】,新世界百货､国瑞城,上百家美食餐厅､超市､购物逛街､夜宵撸串都没问题｡- 10分钟车程或步行:天安门､国博､王府井大街､东交民巷､天坛､北京站- 紧邻超多著名医院:惠民儿童､两广中医､同仁堂､协和､北京医院- 600米5/7号线【磁器口】站,直达北京西站､东四､欢乐谷房间100%“一客一扫”,居住愉快~", '关于此房源');
-            
         },
         save() {
             this.$prompt('名称', '保存到心愿单', {
@@ -532,9 +584,40 @@ export default {
             var yuding=document.querySelector(".mainright .yuding")
             if(people.style.height=="310px"){
                 people.style.height="50px"
-                setTimeout(function(){
-                    yuding.style.opacity="1" 
-                },500)
+            }
+        },
+        desc(i){
+            if(i==1){
+                if(this.peoplenum1>1){
+                    this.peoplenum1-- 
+                }
+            }
+            if(i==2){
+                if(this.peoplenum2>0){
+                    this.peoplenum2-- 
+                }
+            }
+            if(i==3){
+                if(this.peoplenum3>0){
+                    this.peoplenum3-- 
+                }
+            }
+        },
+        add(i){
+            if(i==1){
+                if(this.peoplenum1<this.houseData[0].House_people_num-this.peoplenum2){
+                this.peoplenum1++
+                }
+            }
+            if(i==2){
+                if(this.peoplenum2<this.houseData[0].House_people_num-this.peoplenum1){
+                this.peoplenum2++
+                }
+            }
+            if(i==3){
+                if(this.peoplenum3<5){
+                this.peoplenum3++
+                }
             }
         },
         addressmore(){
@@ -544,10 +627,62 @@ export default {
             }else{
                 am.style.display="none"
             }
-        }
+        },
+        moremap(){
+            setTimeout(() => {
+                this.getLocation()
+            },300)
+            
+            new Date().toLocaleDateString
+            var am=document.querySelector(".moremap");
+            if(am.style.display=="none"){
+                am.style.display="block"
+                
+            }else{
+                am.style.display="none"
+            }
+            var img=document.querySelector(".moremap .pointimg");
+            if(img!=null){
+                img.parentElement.style.background="rgba(255,255,255,0)"
+                console.log(img.parentElement)
+            }
+        },
+        mapnav(m){
+            this.changeBlue=m;
+        },
+        getLocation() { // 从高德地图api获取浏览器定位
+            /*var map = new AMap.Map('map', {
+                zoom: 11, //级别
+                center: [116.412978, 39.895807],
+                viewMode: '3D' //使用3D视图
+            });*/
+            //百度地图
+            var map = new BMap.Map("map");
+            // 初始化地图,设置中心点坐标和地图级别
+            map.centerAndZoom(new BMap.Point(116.419378,39.901908),19);
+                //添加地图类型控件
+            map.addControl(
+            new BMap.MapTypeControl({
+                mapTypes: [BMAP_NORMAL_MAP, BMAP_HYBRID_MAP]
+            })
+            );
+            // 设置地图显示的城市 此项是必须设置的
+            map.setCurrentCity("北京");
+            //开启鼠标滚轮缩放
+            map.enableScrollWheelZoom(true);
+            var point = new BMap.Point(116.419378,39.901908); //根据经纬度创建地图上的一个点
+            map.centerAndZoom(point,14); //设置范围
+            var html=`<img @click="moremap"  src="https://z1.muscache.cn/airbnb/static/packages/home_pin.fb50ae56.png" class="pointimg">`;
+            //var marker = new BMap.Marker(point); //根据点来创建点状覆盖物
+            //map.addOverlay(marker); //把这个覆盖物加载到地图上
+            var myRichMarkerObject = new BMapLib.RichMarker(html, point, {
+                anchor: new BMap.Size(0, 0),
+                enableDragging: false
+            });
+            map.addOverlay(myRichMarkerObject);
+        },
     },
     mounted() {
-    
       window.addEventListener('scroll', this.scroll);
       var date=document.querySelector(".rightdate .dated .mydate")
         //console.log(date.value)
@@ -558,16 +693,11 @@ export default {
         people.style.borderColor="#008489";
         //console.log(people)
         if(people.style.height=="310px"){
-            people.style.height="50px"
-            setTimeout(function(){
-                yuding.style.opacity="1" 
-            },500)
-                       
+            people.style.height="50px"                
         }else{
             people.style.height="310px"
-                yuding.style.opacity="0" 
         }
-      }
+      }  
     },
     created() {
         this.value2=new Date();
@@ -595,7 +725,7 @@ export default {
     },
     components:{
         mydate
-    }
+    },
 }
 </script>
 <style  scoped>
@@ -659,7 +789,7 @@ export default {
         font:14px 微软雅黑;
         font-weight: bold;
         cursor: pointer;
-        z-index:99;
+        z-index:101;
     }
     .topimg button img{
         width:20px;
@@ -719,6 +849,7 @@ export default {
         font-family: 微软雅黑;
         font-size:14px;
         font-weight:800; 
+        cursor: pointer;
     }
     .main_nav ul li a.black{
         color: #000
@@ -797,7 +928,7 @@ export default {
         width: 100%;
         height: 100%;
         background: rgba(255, 255, 255, 0.8);
-        z-index: 100;
+        z-index: 102;
         overflow:scroll;
     }
     .main_main .address .addressmore>div{
@@ -805,7 +936,71 @@ export default {
         margin:30px auto;
         background: #fff;
         box-shadow: 0px 0px 10px -5px #000;
-        padding: 20px
+        padding:30px
+    }
+    .main_main .address .addressmore>div .close{
+        width:30px;height:30px;
+        text-align:center;
+        line-height:25px; 
+        font-size:30px;
+        cursor: pointer;
+        border-radius: 50%;
+        box-shadow: 0px 0px 5px 0px #000;
+        margin-bottom: 10px;
+    }
+    .main_main .address .moremap>div{
+        width:1000px;
+        height: 550px;
+    }
+    .main_main .address .moremap>div .open{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+    }
+    .main_main .address .moremap>div .open .left{
+        width: 40%;
+        height: 500px;
+        font-size: 12px;
+        font-weight: 800
+    }
+    .main_main .address .moremap>div .open .left>div:first-child{
+        width: 100%;
+        border-bottom:1px solid #ddd;
+        font-size: 12px;
+        font-weight: 800;
+    }
+    .main_main .address .moremap>div .open .left>div:first-child span{
+        padding:10px 0;
+        margin: 0 10px;
+        display: inline-block;
+        cursor: pointer;
+    }
+    .main_main .address .moremap>div .open .left>div:last-child{
+        width: 90%
+    }
+    .main_main .address .moremap .mapnavbottom{
+        border-bottom:1px solid #008489;
+    }
+    .hot>div{
+        border-bottom: 1px solid #ddd;
+        padding:15px 10px;
+    }
+    .hot>div>div:first-child{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+    }
+    .hot>div>div:first-child>div:first-child{
+        font-size: 14px;
+    }
+    .hot>div>div:last-child{
+        color: #767676;
+        font-weight: 600;
+    }
+    .main_main .address .moremap>div .open .right{
+        width: 55%;
+        height: 500px;
     }
     .address .map .mapimg{
         position: relative;
@@ -887,7 +1082,7 @@ export default {
     }
     .main_main .rightdate{
         width:83.5%;
-        height:350px;
+        height:370px;
         border:1px solid #ddd;
         position: absolute;
         top:-30px;
@@ -1064,6 +1259,7 @@ export default {
         border-top: 2px solid #008489;
         font-size: 16px;
         font-weight: 600;
+        background: #fff;
     }
     .mainright .people .changenum1{
         padding: 15px;
@@ -1094,7 +1290,7 @@ export default {
     .mainright .yuding{
         position: absolute;
         bottom:30px;
-        width: 90%;
+        width: 89.9%;
         height: 50px;
         text-align: center;
         line-height: 50px;
@@ -1103,5 +1299,9 @@ export default {
         background: #ff5a5f;
         border-radius: 5px;
         cursor: pointer;
+        z-index:-1;
+    }
+    img{
+        background:none !important;
     }
 </style>
