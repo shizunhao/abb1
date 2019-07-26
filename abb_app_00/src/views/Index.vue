@@ -21,8 +21,8 @@
             <p class="litletitle">低至 7 折，可叠加使用礼券</p>
             <div class="btn-container">
                 <button @click="changeblue(0)" :class="{isblue:i==0}" class="my-btn">成都</button>
-                <button @click="changeblue(1)" :class="{isblue:i==1}" class="my-btn">北京</button>
-                <button @click="changeblue(2)" :class="{isblue:i==2}" class="my-btn">上海</button>
+                <button @click="changeblue(2)" :class="{isblue:i==2}" class="my-btn">北京</button>
+                <button @click="changeblue(1)" :class="{isblue:i==1}" class="my-btn">上海</button>
                 <button @click="changeblue(3)" :class="{isblue:i==3}" class="my-btn">重庆</button>
                 <button @click="changeblue(4)" :class="{isblue:i==4}" class="my-btn">广州</button>
                 <button @click="changeblue(5)" :class="{isblue:i==5}" class="my-btn">西安</button>
@@ -69,8 +69,8 @@
             <h1 class="indextitle">热门目的地 </h1>
             <div class="btn-container">
                 <button @click="changeblue2(0)" :class="{isblue:j==0}" class="my-btn">成都</button>
-                <button @click="changeblue2(1)" :class="{isblue:j==1}" class="my-btn">北京</button>
-                <button @click="changeblue2(2)" :class="{isblue:j==2}" class="my-btn">上海</button>
+                <button @click="changeblue2(2)" :class="{isblue:j==2}" class="my-btn">北京</button>
+                <button @click="changeblue2(1)" :class="{isblue:j==1}" class="my-btn">上海</button>
                 <button @click="changeblue2(3)" :class="{isblue:j==3}" class="my-btn">重庆</button>
                 <button @click="changeblue2(4)" :class="{isblue:j==4}" class="my-btn">广州</button>
                 <button @click="changeblue2(5)" :class="{isblue:j==5}" class="my-btn">西安</button>
