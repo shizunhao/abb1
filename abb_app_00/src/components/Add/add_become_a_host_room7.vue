@@ -87,9 +87,11 @@
                     let aa=localStorage.getItem("House_type");
                     this.House_type=result.data[aa].Rent_name;
                 });
+                console.log(sessionStorage.getItem("user_id"))
              },      
             submit() {
                 localStorage.setItem("House_name", this.House_name)
+                console.log(sessionStorage.getItem("user_id"))
                 // this.housingResources_Type=localStorage.getItem("House_type")
                 //合用空间床
                 if (localStorage.getItem("bed1count")) {
