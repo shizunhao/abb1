@@ -74,7 +74,20 @@
                 
             }
         },
+         mounted(){
+             this.load();
+        },
         methods: {
+             load(){
+                 this.axios.get("http://127.0.0.1:3000/add/housingResources_Type").then(result => {
+                     let aa=localStorage.getItem("House_Building");
+                    this.House_Building=result.data[aa].housingResources_name;
+                    });
+                this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
+                    let aa=localStorage.getItem("House_type");
+                    this.House_type=result.data[aa].Rent_name;
+                });
+             },      
             submit() {
                 localStorage.setItem("House_name", this.House_name)
                 // this.housingResources_Type=localStorage.getItem("House_type")
@@ -105,8 +118,8 @@
                 this.House_name = localStorage.getItem("House_name")            
                 this.House_restroom = localStorage.getItem("House_restroom")
 
-                this.House_type = localStorage.getItem("House_type")
-                this.House_Building = localStorage.getItem("House_Building")
+                // this.House_type = localStorage.getItem("House_type")
+                // this.House_Building = localStorage.getItem("House_Building")
                 //接口
                  var obj={                    
                     // House_id:null,
@@ -121,8 +134,8 @@
                     // House_Bed:this.House_Bed,//合用空间床格式
 
                     // House_User_id:this.House_User_id,
-                    // House_type:this.House_type,//格式
-                    // House_Building:this.House_Building//格式
+                    House_type:this.House_type,
+                    House_Building:this.House_Building
                 };
                 this.axios.get("http://127.0.0.1:3000/add/ceshi", {params:obj}).then(result => {
                      console.log(result.data);
@@ -130,6 +143,7 @@
                 this.$router.push("/add_end")
             },
             return1() {
+                localStorage.setItem("House_name", this.House_name)
                 // this.$router.push("/add_become_a_host_room/photos")
                 this.$router.go(-1);
             },

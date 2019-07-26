@@ -132,17 +132,22 @@ export default {
       });
        setTimeout(() => {
                 this.localStorage()
-            }, 80)
+            }, 150)
+    },
+    savelocalStorage(){
+       localStorage.setItem("House_type", this.Rent_Type1)
+      localStorage.setItem("House_Building", this.House_Building)
     },
     submit() {
-      localStorage.setItem("House_type", this.Rent_Type1)
-      localStorage.setItem("House_Building", this.House_Building)
+     this.savelocalStorage();
       this.$emit("change", 2);
-      this.$router.push("/add_become_a_host_room/bedrooms?id=6");
+      this.$router.push("/add_become_a_host_room/bedrooms");
+      // this.$router.push("/add_become_a_host_room/bedrooms?id=6");
       // this.$router.push({path:'/add_become_a_host_room/bedrooms' , params: { add_page:this.add_page }})
 
     },
     return1() {
+      this.savelocalStorage();     
       // this.$router.push("/index")
       this.$router.go(-1);
     },

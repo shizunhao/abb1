@@ -79,17 +79,21 @@ export default {
     this.loadMore();
   },
   methods: {
+    savelocalStorage(){
+        localStorage.setItem("House_restroom", this.count)
+    },
     loadMore() {
       // if(this.add_page>=2){
       //     this.Airbnb_House.House_restroom=0;
       // }
     },
     submit() {
-      localStorage.setItem("House_restroom", this.count)
+      this.savelocalStorage();
       this.$emit("change", 4);
       this.$router.push("/add_become_a_host_room/location");
     },
     return1() {
+      this.savelocalStorage();
       // this.$router.push("/add_become_a_host_room/bedrooms");
       this.$router.go(-1);
     },
