@@ -70,6 +70,19 @@ router.get("/dd",(req,res)=>{
     }
   })
 })
+//接收数据录入表格
+router.get("/ceshi",(req,res)=>{
+  var obj=req.query;
+  var sql=`INSERT INTO airbnb_house SET ?`;
+  pool.query(sql,[obj],(err,result)=>{    
+    if(result.affectedRows>0){
+      res.send({code:1,data:"成功"});
+  }else{
+      res.send({code:-1,data:"失败"});
+  }
+  })
+})
+
 //上传图片1接口
 // router.post('/uploadImg', function(req, res, next) {
 //   console.log(req.body);

@@ -28,7 +28,7 @@
             load(){
                 setTimeout(()=>{
                     this.$router.push("/index")
-                },300000)
+                },3000)
             }
         },
         mounted(){

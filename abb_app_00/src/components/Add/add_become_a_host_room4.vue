@@ -91,12 +91,21 @@
         },
 
         methods: {
+            savelocalStorage(){
+                localStorage.setItem("House_City_id", this.cityid)
+                localStorage.setItem("House_District_id", this.districtid)
+                localStorage.setItem("House_address", this.House_address)
+                localStorage.setItem("House_number", this.House_number)
+            },
             submit() {
+                this.savelocalStorage();
                 this.$emit('change',5);
                 this.$router.push({path: '/add_become_a_host_room/location2', query: {key: this.districtid}})
             },
             return1() {
-                this.$router.push("/add_become_a_host_room/bathrooms")
+                this.savelocalStorage();
+                // this.$router.push("/add_become_a_host_room/bathrooms")
+                this.$router.go(-1);
             },
             loadMore() {
                 this.axios.get("http://127.0.0.1:3000/add/City").then(result => {

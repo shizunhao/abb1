@@ -113,7 +113,8 @@
                 this.$router.push("/add_become_a_host_room/photos")
             },
             return1() {
-                this.$router.push("/add_become_a_host_room/location")
+                // this.$router.push("/add_become_a_host_room/location")
+                this.$router.go(-1);
             },
             load1() {
                 this.districtid=this.$route.query.key
