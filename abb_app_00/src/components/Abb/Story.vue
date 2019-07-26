@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div>
+    <div style="height:61px;">
       <!-- 引入头组件 -->
-      <user-header></user-header>
+      <user-header style='position:fixed; top:0; background:#ffffff; width:100%;'></user-header>
     </div>
     <!-- 以下是搜索界面 -->
     <div class="search_story search_active" id="search_story_main">

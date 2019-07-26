@@ -1,7 +1,8 @@
 <template>
   <div>
-    <div>
-      <user-header></user-header>
+    <div style="height:61px;">
+      <!-- 引入头组件 -->
+      <user-header style='position:fixed; top:0; background:#ffffff; width:100%;'></user-header>
     </div>
     <div class="data_main">
       <div class="result_title">

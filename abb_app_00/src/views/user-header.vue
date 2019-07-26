@@ -123,7 +123,7 @@ export default {
     },
     search() {
       console.log(this.input);
-      this.$router.push("/Search/?lid=" + this.input);
+      this.$router.push("/Search?lid=" + this.input);
     },
     user_bn() {
       this.show = !this.show;
