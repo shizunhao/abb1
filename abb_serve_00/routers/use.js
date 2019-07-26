@@ -91,7 +91,7 @@ router.get("/", (req, res) => {
         res.send({code:400,msg:'用户名不能为空'});
         return;
     }
-    console.log(user_name);
+    //console.log(user_name);
     if(!user_pwd){
         res.send({code:401,msg:'密码不能为空'});
         return;
@@ -99,10 +99,11 @@ router.get("/", (req, res) => {
     var sql = `SELECT * FROM Airbnb_user WHERE user_name=? && user_pwd=?`
     pool.query(sql,[user_name,user_pwd], (err, result) => {
         if (err) throw err;
-        console.log(result);
+        //console.log(result);
         if(result.length>0){
             req.session.user_id=result[0].user_id;
             res.send({ code: 1, msg: "登录成功", data: result });
+            
         }else{
             res.send({code:-1,msg:"登录失败"});
         }
@@ -111,7 +112,7 @@ router.get("/", (req, res) => {
 //注册接口
 router.get("/reg",(req,res)=>{
     var obj=req.query;
-    console.log(obj);
+    //console.log(obj);
     if(obj.uname==''){
         res.send({code:400,msg:'用户名不能为空'});
         return;

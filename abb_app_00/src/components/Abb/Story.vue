@@ -1181,7 +1181,8 @@ export default {
     },
     handleSelect(item) {
       //console.log(item.value);
-      document.querySelector('input').focus();//当选中选项后，input中二次自动获取焦点
+      //document.querySelector('input').focus();//当选中选项后，input中二次自动获取焦点
+      document.getElementById('el_input').focus();
     },
     //点击搜索故事按钮，当前主页面添加active样式，即隐藏；搜索页面显示，去除story_active样式
     search_story1(){
@@ -1226,7 +1227,7 @@ export default {
   directives: {
     focus: {
         inserted: function (el) {
-        el.querySelector('input').focus()
+          el.querySelector('input').focus()
         }
     }
   }
