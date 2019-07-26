@@ -70,7 +70,7 @@
                 House_Bed: "",
                 House_restroom: "",
                 House_name: "",
-                House_User_id: 1,
+                House_User_id: "",
                 
             }
         },
@@ -87,11 +87,11 @@
                     let aa=localStorage.getItem("House_type");
                     this.House_type=result.data[aa].Rent_name;
                 });
-                console.log(sessionStorage.getItem("user_id"))
+                this.House_User_id=sessionStorage.getItem("user_id");
              },      
             submit() {
                 localStorage.setItem("House_name", this.House_name)
-                console.log(sessionStorage.getItem("user_id"))
+                // console.log(sessionStorage.getItem("user_id"))
                 // this.housingResources_Type=localStorage.getItem("House_type")
                 //合用空间床
                 if (localStorage.getItem("bed1count")) {
@@ -109,7 +109,7 @@
                 if (localStorage.getItem("bed5count")) {
                     this.House_Bed += `|${localStorage.getItem("bed5count")}`
                 }
-                 console.log(this.House_Bed)
+                //  console.log(this.House_Bed)
                 //0|0|0|0|0          
                 this.House_people_num = localStorage.getItem("House_people_num")
                 this.House_bednum = localStorage.getItem("House_bednum")
@@ -135,12 +135,12 @@
                     House_bednum:this.House_bednum,//1
                     // House_Bed:this.House_Bed,//合用空间床格式
 
-                    // House_User_id:this.House_User_id,
+                    House_User_id:this.House_User_id,
                     House_type:this.House_type,
                     House_Building:this.House_Building
                 };
                 this.axios.get("http://127.0.0.1:3000/add/ceshi", {params:obj}).then(result => {
-                     console.log(result.data);
+                    //  console.log(result.data);
                 })
                 this.$router.push("/add_end")
             },

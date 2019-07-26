@@ -4,7 +4,7 @@
         <h2>注册爱彼迎</h2>
         <!-- <h3>没有账号?
       <a class="password">注册</a> -->
-    </h3>
+    <!-- </h3> -->
     </div>
     <div class='zc'>
         用户名：<input type="text" @blur="selName"  id='uname' v-model='name' placeholder='请输入用户名' >
