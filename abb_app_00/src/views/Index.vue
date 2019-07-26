@@ -5,10 +5,10 @@
             <user-header class="position-abs"></user-header>
         </div>
         <div class="block">
-            <el-carousel height="429px">
+            <el-carousel width='100%' height="530px">
                 <el-carousel-item v-for="(item,i) in Carousellist" :key="i">
                     <div>
-                        <img style="width:100%;height:429px"
+                        <img style="width:100%;height:530px"
                             :src="'http://127.0.0.1:3000/img/img-index/'+item.Carousel_imgurl" alt="">
                     </div>
                 </el-carousel-item>
@@ -53,7 +53,7 @@
                             <span>{{(item.House_price*item.House_tag).toFixed(2)}}</span><del
                                 class="delprice">￥{{item.House_price.toFixed(2)}}</del><span class="delprice">每晚</span>
                         </div>
-                        <div>
+                        <div style='padding-bottom:20px;'>
                             <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}">
                             </el-rate>
                             五星房东
@@ -101,8 +101,8 @@
                             <span>{{(item.House_price*item.House_tag).toFixed(2)}}</span><del
                                 class="delprice">￥{{item.House_price.toFixed(2)}}</del><span class="delprice">每晚</span>
                         </div>
-                        <div>
-                            <el-rate v-model="value" disabled show-score text-color="#ff9900" score-template="{value}">
+                        <div style='padding-bottom:20px;'>
+                            <el-rate v-model="value" disabled show-score text-color="#00848A" score-template="{value}">
                             </el-rate>
                             五星房东
                         </div>
@@ -121,6 +121,7 @@
                 <div class="flexbox">
                     <!--每层 弹性布局-->
                     <div class="box-item-story" v-for="(item,key) of sel_list" :key="key">
+                    <div>
                         <!--每个房间内容-->
                         <div class="storybox">
                             <!-- 图 -->
@@ -143,7 +144,7 @@
                         <div class="story-buliding">
                             <span>{{item.city}}</span><span>{{item.detail_title}}</span>
                         </div>
-                        <div class="house-name">
+                        <div class="story-name">
                             <!---点赞评论-->
                             <div class="touxiang"><img :src="'http://127.0.0.1:3000/'+item.user_img" alt=""></div>
                             <svg viewBox="0 0 16 16" role="img" aria-label="“赞”的数量" focusable="false"
@@ -162,6 +163,7 @@
                             <span class="givelike">{{item.give_comment}}</span>
                         </div>
                     </div>
+                    </div>
                 </div>
                 <router-link class="getmore" to="/Story">更多精彩故事></router-link>
 
@@ -177,6 +179,7 @@
     export default {
         data() {
             return {
+               
                 Carousellist: [],
                 i: 2,
                 j: 1,
@@ -206,6 +209,7 @@
             this.getcarouserimg(),
                 this.changeblue(this.i)
             this.changeblue2(this.j)
+           
             this.getstory()
         },
         methods: {
@@ -219,7 +223,6 @@
                     console.log(this.sel_list[0].md_img, 111);
                 });
             },
-
             getcarouserimg() {
                 this.axios.get("/index/Carousel").then(result => {
                     //console.log(result.data.data)
@@ -253,34 +256,42 @@
                     this.sel_list = result.data;
                     //console.log(this.sel_list[0].md_img,this.careStoryTop.backgroundImage );
                 });
-            },
-        }
+            }
+        },
     }
 </script>
 <style scoped>
+    .story-buliding{
+        height:39px;
+        overflow:hidden;
+    }
     .story-buliding span:first-child {
         font: 18px Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" !important;
-        margin-right: 5px;
-        font-weight: 600 !important
+        margin-right:5px;
+        font-weight:800 !important
     }
-
+    .story-name{
+        line-height:19px;
+        vertical-align:middle;
+    }
     .story-buliding span:last-child {
-        font: 14px 微软雅黑, Circular, PingFang-SC, "Hiragino Sans GB", "Microsoft YaHei", "Heiti SC" !important;
-        color: #484848;
+        font: 12px 微软雅黑, Circular, PingFang-SC, "Hiragino Sans GB", "Microsoft YaHei", "Heiti SC" !important;
+        color:#484848;
 
     }
 
     svg+span.givelike {
-        font-size: 16px;
-        color: #484848;
-        margin-left: 5px;
-        margin-right: 5px;
+        font-size:12px;
+        color:#484848;
+        margin-left:5px;
+        margin-right:5px;
+        font-weight:0;
     }
 
     .story-buliding {
         margin: 5px 0;
         font: 10px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC";
-        font-weight: 600
+        font-weight:600;
     }
 
     .touxiang {
@@ -306,17 +317,20 @@
 
     .storyitem2 {
         position: absolute;
-        top: 175px;
+        bottom:10px;
         right: 10px;
         display: inline-block;
         width: 40px;
         height: 20px;
-        border-radius: 5px;
+        border-radius: 3px;
         background: white;
         text-align: center;
         line-height: 20px;
-        color: #475669;
-        padding: 1px;
+        font-size:12px;
+        padding:3px;
+        font-weight:800;
+        background:rgba(255,255,255,0.9);
+        color: rgb(72, 72, 72) !important;
     }
 
     .position-abs {
@@ -342,7 +356,7 @@
     }
 
     section {
-        width: 1000px;
+        width:70%;
         margin-top: 100px;
         margin: 0 auto;
         overflow: hidden;
@@ -351,12 +365,13 @@
     .indextitle {
         color: #484848;
         padding: 10px;
-        font-weight: 800 !important;
-        font: 20px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC"
+        font-weight:800 !important;
+        font:24px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC";
+        line-height:30px !important;
     }
 
     .litletitle {
-        padding: 10px;
+        padding:0 10px;
         font: 16px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC"
     }
 
@@ -368,14 +383,16 @@
     }
 
     .my-btn {
-        width: 100px;
-        height: 40px;
+        width: 120px;
+        height: 48px;
         margin-right: 12px;
         border: 1px solid #eee;
         border-radius: 5px;
         background: #fff;
         outline: none;
         box-sizing: border-box;
+        font-weight:700;
+        font-size:17px;
     }
 
     .my-btn:hover {
@@ -385,19 +402,19 @@
     .isblue {
         background: #00848a;
         border: 0;
+        color:#ffffff;
     }
 
     .flexbox {
         display: flex;
         flex-wrap: wrap;
-        width: 1000px;
+        width:100%;
         justify-content: space-between;
 
     }
 
     .box-item {
-        width: 30%;
-        margin: 5px
+        width:32%;
     }
 
     .flexbox a>img {
@@ -408,13 +425,14 @@
 
     .house-buliding {
         color: #714e33;
-        font: 10px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC";
-        font-weight: 600
+        font: 12px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC";
+        font-weight:800 !important;
     }
 
     .house-name {
         color: #484848;
-        font: 14px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC";
+        font: 16px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC";
+        font-weight:800;
     }
 
     .delprice {
@@ -423,19 +441,34 @@
     }
 
     .getmore {
-        color: #008489;
-        font: 14px Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC";
         font-weight: 600;
-        padding: 40px 0;
+        padding:30px 0;
         display: inline-block;
+        font-size: 17px;
+        font-weight: 600;
+        line-height: 22px;
+        color: #008489;
+        padding-left:10px;
     }
 
     .box-item-story {
-        width: 20%;
-        margin: 5px
+        width:25%;
     }
-
-    .box-item-story>div>a>img {
-        height: 200px;
+    .box-item-story>div{
+        width:95%;
+        margin:0 auto;
+    }
+    .box-item-story>div>div>a>img {
+        width:100%;
+        height:246px;
+    }
+</style>
+<style>
+    .el-rate__icon {
+        font-size:14px !important;
+        margin-right:0px !important;
+        color: #00848A !important;
+        -webkit-transition: .3s;
+        transition: .3s;
     }
 </style>

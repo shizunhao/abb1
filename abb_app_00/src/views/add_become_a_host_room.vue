@@ -70,6 +70,9 @@ export default {
     // created(){
     //      this.$router.push("/room");
     // },
+    created() {
+        console.log(sessionStorage.getItem("user_id"));
+    },
     methods:{    
         return1(){
             this.$router.push("/index")

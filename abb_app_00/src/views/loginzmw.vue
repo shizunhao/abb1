@@ -42,6 +42,11 @@
                         this.$message(result.data.msg);
                         //跳转到前一个页面
                         //this.$router.go(-2);
+                        var user_id = result.data.data[0].user_id;
+                        //设置session
+                        sessionStorage.setItem("user_id", user_id); 
+                        //获取session值                      
+                        console.log(sessionStorage.getItem("user_id"));
                         this.$router.push("/index");
                     }
                     

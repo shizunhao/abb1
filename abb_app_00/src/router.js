@@ -5,7 +5,6 @@ import Text from './components/Abb/Text.vue'
 import Details from './views/Details.vue'
 import Date from './components/Abb/Date.vue'
 import Index from './views/Index.vue'
-import Index1 from './views/Index1.vue'
 import add_end from './views/add_end.vue'
 import add_become_a_host_room from './views/add_become_a_host_room.vue'
 import add_room from './components/Add/add_become_a_host_room1.vue'
@@ -30,7 +29,6 @@ export default new Router({
     {path: '/date',component:Date},
     {path: '/details',component: Details},
     {path:'/index',component:Index},
-    {path:'/index1',component:Index1},
     {path:'/text',component:Text},
     {path:'/add_end',component:add_end},
     {path:'/add_become_a_host_room',component:add_become_a_host_room,
@@ -67,7 +65,7 @@ export default new Router({
       ]
     },
     {path: '/',component: Index},
-    {path: '/Search',component: Search},
+    {path: '/Search',component:Search},
     {path:'/Story',component:Story},
     {path:'/Search_result',component:Search_result},   
     {path:'/userdata',component:userdata},    

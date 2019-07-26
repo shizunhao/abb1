@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <my-header></my-header>
+      <user-header></user-header>
     </div>
     <div class="data_main">
       <div class="result_title">

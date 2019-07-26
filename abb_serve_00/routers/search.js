@@ -32,7 +32,7 @@ router.get("/",(req,res)=>{
   var latitudeS=parseFloat(latitude)+0.2;
   var latitudeE=parseFloat(latitude)-0.2;
   //console.log(longitudeS,longitudeE,latitudeS,latitudeE);
-  var sql=`SELECT * FROM Airbnb_House WHERE House_City_id=? AND House_price >=? and House_price <=? AND House_longitude <= ? and House_longitude >= ? AND House_latitude <= ? and House_latitude >= ? AND House_id IN (SELECT Time_House_id FROM Airbnb_House_Time WHERE Time_start<? or Time_end>?)`;
+  var sql=`SELECT * FROM Airbnb_House WHERE House_City_id=? AND House_price >=? and House_price <=? AND House_longitude <= ? and House_longitude >= ? AND House_latitude <= ? and House_latitude >= ? AND House_id NOT IN (SELECT Time_House_id FROM Airbnb_House_Time WHERE Time_start >= ? AND Time_end <= ?)`;
   pool.query(sql,[House_City_id,price[0],price[1],longitudeS,longitudeE,latitudeS,latitudeE,Time_start,Time_end],(err,result)=>{
     if(err) throw err;
     res.send(result);

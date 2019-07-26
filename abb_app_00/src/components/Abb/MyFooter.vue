@@ -68,8 +68,8 @@
                         <li>
                             <a href="javascript:;">开展体验</a>
                             <span class="my-anniu">
-                                    <span>新推出</span>
-                                </span>
+                                新推出
+                            </span>
                         </li>
                         <li>
                             <a href="javascript:;">Open Homes</a>
@@ -145,9 +145,9 @@ export default {
 /*****底部容器*****/
 /*****弹性布局*****/
 .my-footer{
-    width: 800px;
+    width:60%;
     display:flex;
-    justify-content: space-around;
+    justify-content:space-around;
     margin:0 auto;
     margin-top:20px;
     padding-bottom: 5px;
@@ -155,24 +155,26 @@ export default {
     border-bottom: 1px solid #eee
     }
 div.my-footer>div>h3{
-    color:#010000;font-weight: bold!important;
-    font:12px Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" !important;
-    margin-bottom: 15px;
+    color:#010000;
+    font:14px Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" !important;
+    margin-bottom: 10px;
+    font-weight:800 !important;
 }
 .my-footer ul li a{
-    color:#787878;
-    font-weight: bolder!important;
-    font:12px var(--font-font_family, Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC") !important
+    color:rgb(118, 118, 118);
+    font-weight:800 !important;
+    font:14px var(--font-font_family, Circular, "PingFang-SC", "Hiragino Sans GB", "微软雅黑", "Microsoft YaHei", "Heiti SC") !important;
+    line-height:18px;
+    
 }
 .my-anniu{
     display: inline-block;
-    padding-left:5px;
-    padding-right:5px;
+    padding:0 3px;
     margin-left:5px;
     background: rgb(0, 106, 112);
-    border-radius: 5px;
+    border-radius:4px;
     color: #fff;
-    font:10px Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" ;
+    font:6px Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" ;
 }
 .mysvg{
     display: inline-block;
@@ -183,13 +185,13 @@ div.my-footer>div>h3{
 }
 /******底部最后面文字******/
 .my-footer-last{
-    width: 800px;
+    width:800px;
     display:flex;
     justify-content: space-between;
     margin:0 auto;
-    align-items: center;
+    align-items:center;
     color:#010000;
-    font:10px Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" !important;
+    font:12px Circular, PingFang-SC, "Hiragino Sans GB", 微软雅黑, "Microsoft YaHei", "Heiti SC" !important;
     margin-bottom: 20px;
 }
 .mywid1{
