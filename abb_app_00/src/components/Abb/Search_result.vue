@@ -284,7 +284,7 @@ export default {
     btn_left(){
       var btn_right_a=document.getElementsByClassName("btn_right")[0];
       this.clickLeftTime--;
-      console.log(this.clickLeftTime);
+      //console.log(this.clickLeftTime);
       var class_carousel_ul=document.getElementsByClassName("class_carousel_ul")[0];
       if(this.clickLeftTime>=-2){
         class_carousel_ul.style.marginLeft=`${(-256*parseInt(this.clickLeftTime)-512)}px`
@@ -295,13 +295,13 @@ export default {
       }
       //获取当前元素的margin-left
       var marginL=class_carousel_ul.style.marginLeft;//点击一次256px
-      console.log(marginL);
+      // console.log(marginL);
       // 点击两次，左按钮隐藏
       if(this.clickLeftTime==-2){
         var btnLeft=document.getElementsByClassName("btn_left")[0];
         btnLeft.style.display="none";
         this.clickLeftTime=0;
-        console.log(this.clickLeftTime);
+        // console.log(this.clickLeftTime);
       }
     },
     return_story(){
