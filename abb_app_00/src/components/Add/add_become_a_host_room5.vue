@@ -53,9 +53,17 @@
                     </div>
                 </div>
                 <!-- 地图 -->
-                <div class="div_body3" style="width:100%;height:370px;">
-                    <div id="container" @click="map_title" style="width:100%;height:370px;"></div>
-
+                <div class="div_body3" style="width:100%;height:400px;">
+                    <div id="container" @click="map_title" style="width:100%;height:400px;">
+                        <div class="input-card" style="width: 120px"> 
+                        </div>                        
+                        <div class="map-marker" style="position:relative;">
+                                <svg viewBox="0 0 32 32" role="presentation" aria-hidden="true" focusable="false" style="height:40px;width:40px;display:block;fill:#FF5A5F;position:absolute;z-index:1000;display:block;margin-top:160px;left:calc(50% - 20px);">
+                                    <path d="m16 .75c-6.77 0-12.25 5.48-12.25 12.25 0 6.37 3.23 11.14 11.78 18.08a.75.75 0 0 0 .95 0c8.54-6.94 11.77-11.71 11.77-18.08 0-6.77-5.48-12.25-12.25-12.25zm0 17a4.75 4.75 0 1 1 0-9.5 4.75 4.75 0 0 1 0 9.5z" fill-rule="evenodd">
+                                    </path>
+                                </svg>
+                            </div>
+                    </div>
                 </div>
                <!-- 底部固定悬浮 -->
         <div class="div_footer1">
@@ -98,13 +106,13 @@
                 div_location: "false",
                 districtid: 18,
                 position: {},
+                longitude:'',//经度
+                latitude:'',//纬度
+                myzoom:14,
             }
         },
-        props: {
-
-        },
         created() {
-            this.load1(this.districtid);
+            this.load1();
 
         },
         methods: {
@@ -124,15 +132,71 @@
                         "did": did
                     }
                 }).then(result => {
-                    this.position = result.data;
+                    this.longitude=result.data[0].District_longitude
+                    this.latitude=result.data[0].District_latitude
+                    console.log(this.longitude,this.latitude)
                 })
             },
             getLocation() { // 从高德地图api获取浏览器定位
                 var map = new AMap.Map('container', {
-                    zoom: 11, //级别
-                    center: [this.position[0].District_longitude, this.position[0].District_latitude],
+                    zoom: 14, //级别
+                    center: [this.longitude,this.latitude],
+                    // center: [116.397428, 39.90923],
                     viewMode: '3D' //使用3D视图
-                });
+                });  
+                 AMap.plugin([
+                    'AMap.ToolBar',
+                ], function(){
+                    // 在图面添加工具条控件，工具条控件集成了缩放、平移、定位等功能按钮在内的组合控件
+                    map.addControl(new AMap.ToolBar({
+                        // 简易缩放模式，默认为 false
+                        liteStyle: true
+                    }));
+                });  
+                //显示地图层级与中心点信息
+
+                var logMapinfo=()=>{
+                    var zoom = map.getZoom(); //获取当前地图级别
+                    var center = map.getCenter(); //获取当前地图中心位置
+                    this.longitude=center.lng;
+                    this.latitude=center.lat
+                    this.myzoom=zoom;
+                };
+              
+                //绑定地图移动与缩放事件
+                map.on('moveend', logMapinfo);
+                map.on('zoomend', logMapinfo);
+
+                //中心绿圈
+                 var circleadd=()=>{
+                    var circle = new AMap.Circle({
+                        center: [this.longitude, this.latitude],
+                        radius: 1000, //半径
+                        borderWeight: 3,
+                        strokeColor: "#008489", 
+                        strokeOpacity: 1,
+                        strokeWeight: 6,
+                        strokeOpacity: 0.8,
+                        fillOpacity: 0.3,
+                        strokeStyle: 'solid',
+                        strokeDasharray: [10, 10], 
+                        fillColor: '#008489',
+                        zIndex: 50,
+                    })
+                    map.add(circle);
+                 }
+                 //首次刷新，画绿圈
+                 circleadd();
+                    var circleremove=()=>{
+                    map.clearMap();              
+                }
+                //地图移动触发事件
+                    map.on('movestart', circleremove);
+                    map.on('moveend', circleadd);
+                // 地图开始拖拽触发事件
+                // map.on('dragstart', circleremove);
+                //地图拖拽结束触发事件
+            //    map.on('dragend', circleadd);
             },
             map_title(){
                 this.div_location="true"
@@ -141,10 +205,15 @@
         },
 
         mounted() {
-            setTimeout(() => {
-                this.getLocation()
-            }, 200)
-
+            // setTimeout(() => {
+            //     this.getLocation()
+            // }, 200)
+            var loadtime = setInterval(() => {
+                if (this.longitude > 0 && this.latitude > 0) {
+                this.getLocation();
+                clearInterval(loadtime);
+                }
+            }, 10);
 
         },
 

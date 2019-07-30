@@ -335,7 +335,7 @@ export default {
   position: fixed;
   left: 0px;
   bottom: 0px;
-  z-index: 100;
+  z-index: 1001;
   height: 90px;
 }
 
