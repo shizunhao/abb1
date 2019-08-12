@@ -133,7 +133,6 @@ export default {//组件默认导出对象
         text-align: center;
         line-height: 1.43;
         color: #484848 !important;
-        position:
     }
     .div_img_upload{
         overflow:auto;
