@@ -133,9 +133,9 @@
             },
             savelocalStorage(){
                 localStorage.setItem("House_longitude", this.longitude)
-                console.log(this.longitude)
+                // console.log(this.longitude)
                 localStorage.setItem("House_latitude", this.latitude)
-                console.log(this.latitude)
+                // console.log(this.latitude)
             },
             return1() {
                 // this.$router.push("/add_become_a_host_room/location")

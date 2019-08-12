@@ -69,12 +69,12 @@ import upload from './upload.vue'
         methods: {
             img(img_url){
                 this.img_url=img_url
-                console.log(this.img_url,333)
+                // console.log(this.img_url,333)
             },
             submit() {
                 this.$emit('change', 7);
                 localStorage.setItem("House_imgurl",this.img_url)
-                console.log(localStorage.getItem("House_imgurl"))
+                // console.log(localStorage.getItem("House_imgurl"))
                 this.$router.push("/add_become_a_host_room/description")
             },
             return1() {

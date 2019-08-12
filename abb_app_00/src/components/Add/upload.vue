@@ -39,12 +39,12 @@ export default {//组件默认导出对象
      },
         methods: {
             delete_img(url,i){
-                console.log(url)
+                // console.log(url)
                 url=`./upload/${url}`
-                console.log(url)
+                // console.log(url)
                 //发请求让服务器删文件
                 this.axios.get("http://127.0.0.1:3000/add/deleteImg",{params:{'img':url}}).then(result=>{
-                    console.log(result.data)
+                    // console.log(result.data)
                     if(result.data.code==1){
                         this.img_url.splice(i,1)
                         this.files.splice(i,1)  
@@ -76,7 +76,7 @@ export default {//组件默认导出对象
                     var arr=JSON.parse(result);
                     var url=arr.img_url.slice(7)
                     this.img_url.push(url) 
-					console.log(this.img_url);
+					// console.log(this.img_url);
 				}
                 let imgs=this.img_url.join(',')
                 this.$emit('img',imgs)
