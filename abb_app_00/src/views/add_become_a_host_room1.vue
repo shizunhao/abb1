@@ -132,13 +132,14 @@ export default {
       House_Building: ""
     };
   },
-  created() {
-    this.loadMore();
-  },
+  // created() {
+  //   this.loadMore();
+  // },
   mounted() {
-    setTimeout(() => {
-      this.localStorage();
-    }, 300);
+    this.loadMore();
+  //   setTimeout(() => {
+  //     this.localStorage();
+  //   }, 300);
   },
   methods: {
     loadMore() {
@@ -150,12 +151,18 @@ export default {
       this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
         this.Rent_Type = result.data;
       });
-      var loadtime = setInterval(() => {
-        if (this.housingResources_Type.length > 0 && this.Rent_Type > 0) {
+      if (this.housingResources_Type.length >=1 && this.Rent_Type.length >=1) {
           this.localStorage();
+          console.log(222)
           clearInterval(loadtime);
         }
-      }, 10);
+      // var loadtime = setInterval(() => {
+      //   if (this.housingResources_Type.length >=1 && this.Rent_Type.length >=1) {
+      //     this.localStorage();
+      //     console.log(222)
+      //     clearInterval(loadtime);
+      //   }
+      // }, 10);
     },
     savelocalStorage() {
       localStorage.setItem("House_type", this.Rent_Type1);
@@ -165,19 +172,15 @@ export default {
       this.savelocalStorage();
       this.$emit("change", 2);
       this.$router.push("/add_become_a_host_room/bedrooms");
-      // this.$router.push("/add_become_a_host_room/bedrooms?id=6");
-      // this.$router.push({path:'/add_become_a_host_room/bedrooms' , params: { add_page:this.add_page }})
     },
     return1() {
       this.savelocalStorage();
-      // this.$router.push("/index")
       this.$router.go(-1);
     },
     show() {
       var div = document.getElementById("housingResources");
       var divs = div.childNodes;
       for (var divc of divs) {
-        //console.log(divc)
         divc.style.display = "block";
       }
       var type = document.getElementById("type");
@@ -185,13 +188,14 @@ export default {
     },
     select(i) {
       var div = document.getElementById("housingResources");
+      console.log(div)
       var divs = div.childNodes;
+      console.log(divs)
       for (var divc of divs) {
         divc.style.background = "rgb(242,242,242)";
       }
       divs[i].style.background = "rgb(178,218,219)";
       this.House_Building = i;
-      //console.log(this.House_Building)
     },
     Rentselect(i) {
       var Rent_Type = document.getElementById("Rent_Type");
@@ -205,19 +209,11 @@ export default {
     },
     localStorage() {
       let n = localStorage.getItem("House_Building");
-
+      this.select(n);
       if (n > 11) {
         this.show();
       }
-       if(!n){
-        n=-1
-      }else{
-      this.select(n);
-      }
       let m = localStorage.getItem("House_type");
-      if(!m){
-        m=0
-      }
       this.Rentselect(m);
     }
   }

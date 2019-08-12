@@ -75,7 +75,7 @@ export default {
       count: 1
     };
   },
-  created() {
+  mounted() {
     this.loadMore();
   },
   methods: {
@@ -83,9 +83,10 @@ export default {
         localStorage.setItem("House_restroom", this.count)
     },
     loadMore() {
-      // if(this.add_page>=2){
-      //     this.Airbnb_House.House_restroom=0;
-      // }
+      this.count=Number(localStorage.getItem("House_restroom"))
+      if(!this.count){
+        this.count=1
+      }
     },
     submit() {
       this.savelocalStorage();

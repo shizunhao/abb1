@@ -71,7 +71,8 @@
                 House_restroom: "",
                 House_name: "",
                 House_User_id: "",
-                
+                latitude:'',
+                longitude:''
             }
         },
          mounted(){
@@ -81,13 +82,25 @@
              load(){
                  this.axios.get("http://127.0.0.1:3000/add/housingResources_Type").then(result => {
                      let aa=localStorage.getItem("House_Building");
+                     if(aa){
+                    //  console.log(result.data[aa])
                     this.House_Building=result.data[aa].housingResources_name;
+                     }
                     });
                 this.axios.get("http://127.0.0.1:3000/add/Rent_Type").then(result => {
                     let aa=localStorage.getItem("House_type");
+                    if(!aa){
+                        console.log(result.data)
+                        aa=0
+                    this.House_type=result.data[aa].Rent_name;
+                    }
                     this.House_type=result.data[aa].Rent_name;
                 });
                 this.House_User_id=sessionStorage.getItem("user_id");
+                this.House_name=localStorage.getItem("House_name")
+                if(!this.House_name){
+                    this.House_name=''
+                }
              },      
             submit() {
                 localStorage.setItem("House_name", this.House_name)
@@ -119,7 +132,9 @@
                 this.House_number = localStorage.getItem("House_number")
                 this.House_name = localStorage.getItem("House_name")            
                 this.House_restroom = localStorage.getItem("House_restroom")
-
+                this.longitude=localStorage.getItem("House_longitude")
+                this.latitude=localStorage.getItem("House_latitude")
+                this.imgurl=localStorage.getItem("House_imgurl")
                 // this.House_type = localStorage.getItem("House_type")
                 // this.House_Building = localStorage.getItem("House_Building")
                 //接口
@@ -134,7 +149,9 @@
                     House_people_num:this.House_people_num,//1
                     House_bednum:this.House_bednum,//1
                     // House_Bed:this.House_Bed,//合用空间床格式
-
+                    House_longitude:this.longitude,
+                    House_latitude:this.latitude,
+                    House_imgurl:this.imgurl,
                     House_User_id:this.House_User_id,
                     House_type:this.House_type,
                     House_Building:this.House_Building

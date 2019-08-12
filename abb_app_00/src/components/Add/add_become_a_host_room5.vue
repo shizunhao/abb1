@@ -118,10 +118,28 @@
         methods: {
             submit() {
                 this.$emit('change',6);
+                this.savelocalStorage()
                 this.$router.push("/add_become_a_host_room/photos")
+            },
+            loadMore(){
+                this.longitude=localStorage.getItem("House_longitude")
+                if(!this.longitude){
+                    this.longitude=116.3
+                }
+                this.latitude=localStorage.getItem("House_latitude")
+                if(!this.latitude){
+                    this.latitude=39.9
+                }
+            },
+            savelocalStorage(){
+                localStorage.setItem("House_longitude", this.longitude)
+                console.log(this.longitude)
+                localStorage.setItem("House_latitude", this.latitude)
+                console.log(this.latitude)
             },
             return1() {
                 // this.$router.push("/add_become_a_host_room/location")
+                this.savelocalStorage()
                 this.$router.go(-1);
             },
             load1() {
@@ -134,7 +152,7 @@
                 }).then(result => {
                     this.longitude=result.data[0].District_longitude
                     this.latitude=result.data[0].District_latitude
-                    console.log(this.longitude,this.latitude)
+                    // console.log(this.longitude,this.latitude)
                 })
             },
             getLocation() { // 从高德地图api获取浏览器定位
@@ -201,10 +219,10 @@
             map_title(){
                 this.div_location="true"
             }
-
         },
 
         mounted() {
+            this.loadMore()
             // setTimeout(() => {
             //     this.getLocation()
             // }, 200)

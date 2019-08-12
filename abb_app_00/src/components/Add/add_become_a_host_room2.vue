@@ -38,15 +38,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="div_body4" @click="blurbedroom()">
-                    <p @click="loadMore1" class="font-title5">有几个卧室？</p>
-                    <div class="div_bedroom">
-                        <select @click.stop="bedroom()" name="bedroom" id="select_bedroom"> -->
-                <!-- <option value="i" v-for="(bed,i)of bedrooms" :key="i" v-text="bed">111</option>
-                            <option value="i">0间卧室</option>
-                        </select>
-                    </div>
-                </div> -->
                 <div class="div_body5">
                     <div>
                         <p class="font-title5">有几张床？</p>
@@ -293,10 +284,8 @@
                 bed5count: 0,
             }
         },
-
-        created() {
+        mounted() {
             this.loadMore1();
-
         },
         methods: {
             savelocalStorage(){
@@ -319,24 +308,69 @@
                 this.$router.go(-1);
             },
             loadMore1() {
-                // if(this.add_page>=1){
-                //     this.Airbnb_House.House_people_num=4;
-                //     this.Airbnb_House.House_bednum=1
-                // }          
-                // console.log(this.$route.query)  
+                this.peoplecount=parseInt(localStorage.getItem("House_people_num"))
+                if(this.peoplecount==1){
+                    var people_reduce = document.getElementById("people_reduce")
+                    people_reduce.style.opacity = "0.3"
+                }else if(!this.peoplecount){
+                    this.peoplecount=4
+                }
+                this.bedcount=parseInt(localStorage.getItem("House_bednum"))
+                if(this.bedcount>=2){
+                    var div_bed_count = document.getElementById("div_bed_count")
+                    var bed_reduce = div_bed_count.firstChild;
+                    bed_reduce.style.opacity = "1"
+                }else if(!this.bedcount){
+                    this.bedcount=1
+                }
+                this.bed1count=parseInt(localStorage.getItem("bed1count"))
+                if(this.bed1count>=1){
+                    var btn_reduce1 = document.getElementById("btn_reduce1")
+                    var btn_add1 = document.getElementById("btn_add1")
+                    btn_reduce1.style.opacity = "1"
+                }else if(!this.bed1count){
+                    this.bed1count=0
+                }
+                this.bed2count=parseInt(localStorage.getItem("bed2count"))
+                if(this.bed2count>=1){
+                    var btn_reduce2 = document.getElementById("btn_reduce2")
+                    var btn_add2 = document.getElementById("btn_add2")
+                    btn_reduce2.style.opacity = "1"
+                }else if(!this.bed2count){
+                    this.bed2count=0
+                }
+                this.bed3count=parseInt(localStorage.getItem("bed3count"))
+                if(this.bed3count>=1){
+                    var btn_reduce3 = document.getElementById("btn_reduce3")
+                    var btn_add3 = document.getElementById("btn_add3")
+                    btn_reduce3.style.opacity = "1"
+                }else if(!this.bed3count){
+                    this.bed3count=0
+                }
+                this.bed4count=parseInt(localStorage.getItem("bed4count"))
+                if(this.bed4count>=1){
+                    var btn_reduce4 = document.getElementById("btn_reduce4")
+                    var btn_add4 = document.getElementById("btn_add4")
+                    btn_reduce4.style.opacity = "1"
+                }else if(!this.bed4count){
+                    this.bed4count=0
+                }
+                this.bed5count=parseInt(localStorage.getItem("bed5count"))
+                if(this.bed5count>=1){
+                    var btn_reduce5 = document.getElementById("btn_reduce5")
+                    var btn_add5 = document.getElementById("btn_add5")
+                    btn_reduce5.style.opacity = "1"
+                }else if(!this.bed5count){
+                    this.bed5count=0
+                }
+                this.bedroomcount=this.bed1count+this.bed2count+this.bed3count+this.bed4count+this.bed5count
+                if(this.bedroomcount>=1){
+                    this.addbed='false'
+                    }else if(!this.bedroomcount){
+                    this.bedroomcount=0
+                }
             },
-            // bedroom(){
-            //     var select_bedroom=document.getElementById("select_bedroom")
-            //     var div_select_bedroom=select_bedroom.parentNode;
-            //     console.log(div_select_bedroom)
-            //     div_select_bedroom.style.border="1px solid #008489"
-            //     select_bedroom.style.outline="none"
-            // },
-            // blurbedroom(){
-            //     var select_bedroom=document.getElementById("select_bedroom")
-            //     var div_select_bedroom=select_bedroom.parentNode;
-            //     div_select_bedroom.style.border="0px solid transparent"
-            // },
+            
             bed_count(n) {
                 var div_bed_count = document.getElementById("div_bed_count")
                 var bed_reduce = div_bed_count.firstChild;

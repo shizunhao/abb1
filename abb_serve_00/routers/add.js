@@ -1,5 +1,6 @@
 const express=require('express');
 const pool=require('../pool.js');
+const fs=require('fs');
 var router=express.Router();
 //房屋类型接口
 // server.get("/housingResources_Type",(req,res)=>{
@@ -83,79 +84,20 @@ router.get("/ceshi",(req,res)=>{
   })
 })
 
-//上传图片1接口
-// router.post('/uploadImg', function(req, res, next) {
-//   console.log(req.body);
-//   console.log(req.files);
-  //获取详细信息
-//   var file = req.files.logo;//From the name
-//   console.log('文件类型：%s', file.type);
-//   console.log('原始文件名：%s', file.name);
-//   console.log('文件大小：%s', file.size);
-//   console.log('文件保存路径：%s', file.path);
-// });
-// 上传房源信息接口
-// router.get("/insertHouse",(req,res)=>{
+//接收数据录入表格
+router.get("/deleteImg",(req,res)=>{
+  // console.log(111)
+// console.log(req.query.img)
 //   var obj=req.query;
-//   console.log(obj);
-//   var sql=`INSERT INTO  Airbnb_House (
-//     House_id,House_City_id,House_District_id,House_name,House_User_id,House_people_num,House_type,House_bednum,
-//     House_Bed,House_restroom,House_Building,House_address,House_number
-//   ) VALUES ?;`;
-//   pool.query(sql,[obj],(err,result)=>{
-//     if(err){
-//       console.log(err);
-//       res.send({code:0});
-//     }else{
-//       console.log(result)
-//       res.send(result);
-//     }
-//   })
-// })
+  var rr=fs.existsSync(`${req.query.img}`);
+// console.log(rr);
+    // console.log(obj)
+    fs.unlink(req.query.img,function(err){
+      res.send({code:1,data:"成功"});
+    });
+    // if(err)throw err
 
-// null,
-//     'House_City_id',
-//     'House_District_id',
-//     'House_name',
-//     'House_User_id',
-//     '',
-//     '',
-//     'House_people_num',
-//     'House_type',
-//     '',
-//     '',
-//     'House_bednum',
-//     'House_Bed',
-//     'House_restroom',
-//     '',
-//     '',
-//     'House_Building',
-//     '',
-//     'House_address',
-//     'House_number',
-//     '',
-//     '',
-//     '',
-//     ''
-// 上传房源信息接口
-// pool.query('UPDATE xz_laptop SET title=?,price=? WHERE lid=?',
-	// [obj.title,obj.price,obj.lid],
-// router.get("/insertHouse",(req,res)=>{
-//   var House_imgurl=req.query.House_imgurl;
-//   console.log(House_imgurl);
-//   var sql=`UPDATE Airbnb_House SET House_imgurl=?`;
-//   pool.query(sql,[House_imgurl],(err,result)=>{
-//     if(err){
-//       console.log(err);
-//       res.send({code:0});
-//     }else{
-//       res.send(result);
-//     }
-//   })
-// })
-
-
-
+})
 
 
 

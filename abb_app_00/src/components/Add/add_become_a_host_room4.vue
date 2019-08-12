@@ -20,7 +20,7 @@
                 </div>
                 <div class="div_body2" v-show="cityid!=-1">
                     <p class="select_title">市(区)</p>
-                    <select name="sasdd" id="asdsd" v-model="districtid" @change="district_change()">
+                    <select name="sasdd" id="asdsd" v-model="districtid">
                         <option value="-1">请选择</option>
                         <option :value="d.District_id" v-for="(d,i) of district" :key="i" v-text="d.District_name">
                         </option>
@@ -29,14 +29,14 @@
                 <div class="div_body3">
                     <p class="select_title">详细地址（无需再写省市）</p>
                     <div>
-                        <input type="text" v-model="House_address" @change="addresschange" class="input_text"
+                        <input type="text" v-model="House_address" class="input_text"
                             placeholder="例如：崂山国际花园1号楼">
                     </div>
                 </div>
                 <div class="div_body4">
                     <p class="select_title">门牌号（仅告知预订的房客）</p>
                     <div>
-                        <input type="text" v-model="House_number" @change="numberchange" class="input_text"
+                        <input type="text" v-model="House_number" class="input_text"
                             placeholder="例如：1单元1202室">
                     </div>
                 </div>
@@ -89,6 +89,9 @@
         created() {
             this.loadMore()
         },
+        mounted() {
+            this.load()
+        },
 
         methods: {
             savelocalStorage(){
@@ -96,6 +99,26 @@
                 localStorage.setItem("House_District_id", this.districtid)
                 localStorage.setItem("House_address", this.House_address)
                 localStorage.setItem("House_number", this.House_number)
+            },
+            load(){
+                this.cityid=localStorage.getItem("House_City_id")
+                if(!this.cityid){
+                    this.cityid=-1
+                }
+                this.districtid=localStorage.getItem("House_District_id")
+                if(!this.districtid){
+                    this.districtid=-1
+                }else if(this.cityid>=1){
+                    this.district_select(this.cityid)
+                    }
+                this.House_address=localStorage.getItem("House_address")
+                if(!this.House_address){
+                    this.House_address=''
+                }
+                this.House_number=localStorage.getItem("House_number")
+                if(!this.House_number){
+                    this.House_number=''
+                }
             },
             submit() {
                 this.savelocalStorage();
@@ -109,7 +132,6 @@
             },
             loadMore() {
                 this.axios.get("http://127.0.0.1:3000/add/City").then(result => {
-                    //console.log(result.data)
                     this.city = result.data;
                 })
             },
@@ -120,24 +142,8 @@
                         "id": n
                     }
                 }).then(result => {
-                    //console.log(result.data)
                     this.district = result.data;
                 })
-                // this.Airbnb_House.H
-                // House_City_id = this.cityid;
-                //console.log(this.Airbnb_House.House_City_id)            
-            },
-            district_change() {
-               // this.Airbnb_House.House_District_id = this.districtid;
-                //console.log(this.Airbnb_House.House_District_id)
-            },
-            addresschange() {
-                //this.Airbnb_House.House_address = this.House_address;
-                // console.log(this.Airbnb_House.House_address)
-            },
-            numberchange() {
-               // this.Airbnb_House.House_number = this.House_number;
-                //console.log(this.Airbnb_House.House_number)
             },
         }
     }
